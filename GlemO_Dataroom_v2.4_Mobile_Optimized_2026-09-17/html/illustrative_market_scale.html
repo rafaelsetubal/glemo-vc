@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en"><head><style>html,body{background:#071226}html:not(.glemo-auth-ready) body{visibility:hidden}</style><script src="auth-guard.js?v=auth-6"></script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlemO Token2049 - Market Scale</title>
+<link rel="icon" href="../favicon.ico?v=go-20260914">
+<link rel="stylesheet" href="style.css?v=vc-grade-2026-09-04">
+<style>
+  .scale-cards { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; max-width:900px; margin:16px 0 8px; }
+  .scale-card { padding:22px; border:1px solid rgba(217,184,63,.35); border-radius:8px;
+    background:linear-gradient(180deg, rgba(18,35,62,.9), rgba(9,20,40,.86)); box-shadow:var(--shadow); }
+  .scale-card .big { font-family:Georgia,"Times New Roman",serif; font-size:40px; line-height:1; color:var(--gold-soft); }
+  .scale-card .lbl { margin-top:8px; color:var(--text); font-size:14px; font-weight:700; }
+  .scale-card .src { margin-top:6px; color:var(--muted); font-size:12px; }
+  .funnel { max-width:900px; margin:14px 0 8px; }
+  .funnel-row { display:flex; align-items:center; gap:16px; margin:10px 0; }
+  .funnel-bar { display:flex; flex-direction:column; align-items:flex-start; gap:3px;
+    min-width:340px; padding:13px 18px; border-radius:8px; color:var(--text); font-weight:700; }
+  .funnel-bar .fval { font-family:Georgia,"Times New Roman",serif; font-size:22px; line-height:1.1; }
+  .funnel-bar .ftag { font-size:12px; font-weight:600; opacity:.92; }
+  .funnel-note { color:var(--muted); font-size:13px; flex:0 0 220px; }
+  .b1 { width:100%; background:rgba(18,35,62,.95); border:1px solid rgba(255,255,255,.12); }
+  .b2 { width:82%; background:rgba(20,40,66,.95); border:1px solid rgba(255,122,0,.35); }
+  .b3 { width:64%; background:linear-gradient(135deg, rgba(217,184,63,.28), rgba(18,35,62,.92)); border:1px solid rgba(217,184,63,.45); }
+  .b4 { width:52%; background:linear-gradient(135deg, rgba(217,184,63,.55), rgba(18,35,62,.92)); border:1px solid rgba(217,184,63,.7); }
+  .illus-flag { display:inline-block; font-size:11px; font-weight:800; letter-spacing:.14em;
+    text-transform:uppercase; color:#071226; background:var(--gold); padding:3px 9px; border-radius:4px; }
+  @media (max-width:900px){
+    .scale-cards { grid-template-columns:1fr; }
+    .funnel-row { flex-direction:column; align-items:stretch; }
+    .funnel-note { flex:none; }
+    .funnel-bar { width:100% !important; min-width:0; }
+  }
+</style></head>
+<body><div class="shell">
+<aside class="sidebar">
+<div class="logo"><img src="assets/glemo-logo-wordmark.png" alt="GlemO"></div>
+<div class="eyebrow">Token2049 Data Room</div>
+<nav class="nav">
+<div class="nav-separator" aria-hidden="true"><span>Overview</span></div>
+<a class="" href="../glemo-deck-web3-diligence-ready.pdf">Investor Deck PDF</a>
+<a class="" href="00_data_room_index.html">Data Room Index</a>
+<div class="nav-separator" aria-hidden="true"><span>Diligence</span></div>
+<a class="" href="23_token2049_readiness.html">Token2049 Readiness</a>
+<a class="" href="24_asset_class_expansion_map.html">Asset-Class Expansion</a>
+<a class="" href="25_institutional_diligence_checklist.html">Institutional Checklist</a>
+<a class="" href="01_investment_memo.html">Investment Memo</a>
+<a class="" href="02_legal_compliance_summary.html">Legal / Compliance</a>
+<a class="" href="20_regulatory_positioning_note.html">Regulatory Positioning</a>
+<a class="" href="18_corporate_structure.html">Corporate Structure</a>
+<a class="" href="03_wallet_control_policy.html">Wallet / Float Policy</a>
+<a class="" href="04_partner_fallback_rails.html">Rail Continuity Plan</a>
+<a class="" href="05_seed_milestone_gates.html">Seed Milestone Gates</a>
+<a class="" href="06_platform_responsibility_matrix.html">Responsibility Matrix</a>
+<a class="" href="07_competitive_positioning.html">Competitive Positioning</a>
+<a class="" href="08_provider_counsel_metrics_evidence.html">Evidence Plan</a>
+<a class="" href="09_execution_requests_and_outreach.html">Execution Requests</a>
+<a class="" href="10_canonical_numbers_and_language.html">Canonical Language</a>
+<a class="" href="11_business_model_upgrade.html">Business Model</a>
+<a class="" href="21_enterprise_saas_offering.html">Enterprise SaaS Offer</a>
+<a class="" href="22_data_room_security_access_note.html">Data Room Security</a>
+<a class="" href="12_diligence_disclosure_protocol.html">Disclosure Protocol</a>
+<a class="" href="13_token_governance_policy.html">Token Governance</a>
+<a class="" href="14_investor_grade_use_of_funds_benchmark_2026.html">Use Of Funds</a>
+<a class="" href="15_gtm_and_pricing.html">GTM & Pricing</a>
+<a class="" href="16_product_mvp_scope.html">Product MVP Scope</a>
+<a class="" href="17_evidence_status.html">Evidence Status</a>
+<div class="nav-separator" aria-hidden="true"><span>Financial & Execution</span></div>
+<a class="" href="financial_summary.html">Financial Summary</a>
+<a class="" href="execution_roadmap.html">Execution Roadmap</a>
+<a class="" href="unit_economics.html">Unit Economics</a>
+<a class="active" href="illustrative_market_scale.html">Market Scale</a>
+<a class="" href="../GlemO_TOKEN2049_PreSeed_Model_2026-09.xlsx">Operating Model XLSX</a>
+<a class="" href="../glemo-execution-roadmap-web3.pdf">Roadmap PDF</a>
+<div class="nav-separator" aria-hidden="true"><span>Platform</span></div>
+<a class="" href="../wireframe_package/index.html">Platform Wireframe</a>
+<a class="" href="../wireframe_package/app.html#platformSitemap">Journey Map</a>
+<a class="" href="19_platform_dfd_requirements.html">DFD & Requirements</a>
+<a class="" href="26_product_requirements_specification.html">Product Requirements / PRD</a>
+<a class="" href="../wireframe_package/app.html#mvp1Scope">MVP1 Scope</a>
+<a class="" href="../wireframe_package/app.html#operatingReadiness">Readiness Register</a>
+<a class="" href="../wireframe_package/app.html#retailPortal">Retail Client Portal</a>
+<a class="" href="../wireframe_package/app.html#institutionalPortal">Institutional Portal</a>
+<a class="" href="../wireframe_package/app.html#sellerOrgAdmin">Seller Admin</a>
+<a class="" href="../wireframe_package/app.html#billingRevenue">Billing / Revenue Ops</a>
+<a class="" href="../wireframe_package/app.html#aiOps">AI Operations</a>
+<a class="" href="../wireframe_package/app.html#complianceCases">Compliance Cases</a>
+<a class="" href="../wireframe_package/app.html#assetFactSheet">Asset Fact Sheet</a>
+<a class="" href="../wireframe_package/app.html#distributionSaas">Distribution SaaS</a>
+<a class="" href="../wireframe_package/app.html#sellerPlans">Seller Plans</a>
+</nav>
+</aside>
+<main class="content"><section class="hero index-hero">
+<img class="hero-logo" src="assets/glemo-logo-wordmark.png" alt="GlemO">
+<div class="hero-label">MARKET SCALE</div>
+<h1 class="hero-thesis">Market Scale</h1>
+<div class="hero-divider"></div>
+<p class="hero-round">Asset-class-neutral liquidity and distribution rail for tokenized real-world assets.</p>
+<p class="subtitle">Market sizing should support the wedge without becoming a valuation promise.</p>
+</section>
+
+<h2>Market Context</h2>
+<p>The RWA market is already large enough to justify a focused infrastructure wedge, but still immature enough that distribution, liquidity and standardization remain unsolved. GlemO should use market size as context, not as a revenue forecast.</p>
+<div class="notice"><strong>Read this first:</strong> the figures below are illustrative market-sizing only. They are not revenue projections, liquidity promises, valuation support or securities offering language. They show why distribution and liquidity readiness are worth solving.</div>
+<div class="scale-cards">
+  <div class="scale-card">
+    <div class="big">US$60B+</div>
+    <div class="lbl">Tracked tokenized RWA value on-chain</div>
+    <div class="src">Ex-stablecoins, used as market context rather than a forecast.</div>
+  </div>
+  <div class="scale-card">
+    <div class="big">56%</div>
+    <div class="lbl">Indicative dormant-tokenized-asset share used to illustrate frozen market capacity</div>
+    <div class="src">Used as a visual sizing input, not a forecast.</div>
+  </div>
+</div>
+<p>Tokenization is no longer the only hard part. Issuance capacity is increasing; discovery, qualified demand, reporting discipline and repeatable liquidity workflows remain the gap GlemO exists to organize.</p>
+
+<h2>Illustrative Beachhead Funnel <span class="illus-flag">Illustrative</span></h2>
+<p>A conservative visual bridge from the dormant market base to the type of annual routed flow GlemO could help coordinate if the rail proves buyer activation, provider routing and compliant opportunity discovery.</p>
+<div class="funnel">
+  <div class="funnel-row">
+    <div class="funnel-bar b1"><span class="fval">US$60B</span><span class="ftag">Total tokenized base</span></div>
+    <div class="funnel-note">Existing RWA tokenization context.</div>
+  </div>
+  <div class="funnel-row">
+    <div class="funnel-bar b2"><span class="fval">US$32.9B</span><span class="ftag">Dormant capacity - measured subset</span></div>
+    <div class="funnel-note">Frozen or low-velocity capital illustrates the opportunity. The 56% input applies to the measured subset referenced in the source material, not mechanically to the full US$60B market context.</div>
+  </div>
+  <div class="funnel-row">
+    <div class="funnel-bar b3"><span class="fval">US$1.65B-US$1.68B</span><span class="ftag">Target slice - approx. 5% of dormant</span></div>
+    <div class="funnel-note">Beachhead sizing assumption, not a committed pipeline. Range reflects rounding across the dormant base.</div>
+  </div>
+  <div class="funnel-row">
+    <div class="funnel-bar b4"><span class="fval">US$720M</span><span class="ftag">Illustrative annual routed flow</span></div>
+    <div class="funnel-note">Approx. one qualified US$3M institutional routed-flow operation per business day.</div>
+  </div>
+</div>
+
+<h2>Illustrative Unit Mechanics <span class="illus-flag">Illustrative</span></h2>
+<p>This shows institutional routed-flow mechanics only after the platform proves compliant routing. It should not be read as current revenue, guaranteed liquidity or near-term guidance. This scenario is separate from the deck's Year 1 proof model, which now tracks routed opportunities and revenue quality rather than a mature take-rate assumption.</p>
+<div class="table-wrap"><table><thead><tr><th>Input</th><th>Assumption</th><th>Illustrative result</th></tr></thead><tbody><tr><td data-label="Input">Activated flow</td><td data-label="Assumption">Approx. one qualified institutional routed-flow operation per business day at US$3M ticket size.</td><td data-label="Illustrative result">US$720M per year illustrative routed flow.</td></tr><tr><td data-label="Input">Transaction fee</td><td data-label="Assumption">0.15% on completed routed flow, only where approved and contracted. Maps to the <a href="11_business_model_upgrade.html" style="color:var(--gold-soft)">transaction / routed flow</a> line in the revenue architecture.</td><td data-label="Illustrative result">US$1.08M per year illustrative fee capacity.</td></tr><tr><td data-label="Input">Share of target slice</td><td data-label="Assumption">US$720M of the US$1.65B-US$1.68B beachhead slice.</td><td data-label="Illustrative result">Approx. 43% of the beachhead slice. Treat this as mature capacity, not a near-term operating plan.</td></tr></tbody></table></div>
+
+<h2>Operating Implication</h2>
+<div class="table-wrap"><table><thead><tr><th>Signal</th><th>Implication for GlemO</th></tr></thead><tbody><tr><td data-label="Signal">Tokenized assets exist across multiple providers and networks.</td><td data-label="Implication for GlemO">Issuance is not the only hard problem. Coordination and distribution are the next constraint.</td></tr><tr><td data-label="Signal">Real estate tokenization still faces secondary-market and standardization bottlenecks.</td><td data-label="Implication for GlemO">A neutral rail can be valuable if it improves discovery, reporting, buyer activation and liquidity readiness.</td></tr><tr><td data-label="Signal">Public marketing of crypto/RWA opportunities is regulated in major jurisdictions.</td><td data-label="Implication for GlemO">The marketplace front must separate discovery from restricted offer/access workflows.</td></tr><tr><td data-label="Signal">AI is becoming a core operating advantage in asset management and distribution.</td><td data-label="Implication for GlemO">GlemO should prove AI with workflow KPIs, not generic AI language.</td></tr></tbody></table></div>
+<h2>Sources</h2>
+<div class="table-wrap"><table><thead><tr><th>Topic</th><th>Source</th></tr></thead><tbody><tr><td data-label="Topic">RWA market activity and real estate liquidity bottlenecks</td><td data-label="Source">https://app.rwa.xyz/blog/announcing-real-estate-dashboard</td></tr><tr><td data-label="Topic">Tokenization market concentration and dormant on-chain value</td><td data-label="Source">https://research.beincrypto.com/tokenization-2026-report-first-edition</td></tr><tr><td data-label="Topic">UK cryptoasset financial-promotion perimeter</td><td data-label="Source">https://www.fca.org.uk/firms/cryptoassets/marketing-uk-consumers</td></tr><tr><td data-label="Topic">Tokenized real estate market context</td><td data-label="Source">https://www.deloitte.com/us/en/insights/industry/financial-services/financial-services-industry-predictions/2025/tokenized-real-estate.html</td></tr><tr><td data-label="Topic">Distribution and AI as asset-management advantage</td><td data-label="Source">https://www.bcg.com/publications/2026/an-imperative-for-growth-and-the-new-economics-of-asset-management</td></tr></tbody></table></div>
+<p id="glemo-lang-note" style="margin-top:18px;font-size:12px;color:var(--muted,#8a93a5);border-top:1px solid rgba(255,255,255,.08);padding-top:10px;">This page may be displayed in localized draft form as a courtesy translation. The English version is the governing text; in case of any discrepancy, English prevails.</p><div class="footer">Confidential - For authorized investor diligence only. As of September 2026.</div>
+</main></div><script src="i18n-dict.js?v=1"></script>
+<script src="i18n.js?v=1"></script>
+</body></html>

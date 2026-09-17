@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GlemO - Confidential Data Room</title>
+  <link rel="icon" href="favicon.ico?v=go-20260914">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: #060B13;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 102, 255, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(255, 107, 0, 0.08) 0px, transparent 50%);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: #0F172A;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .login-card {
+      position: relative;
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 42px 38px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .login-language {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      min-height: 36px;
+      padding: 0 9px;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      background: #F8FAFC;
+      color: #0F172A;
+      font: 700 12px/1 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer;
+    }
+    html[dir="rtl"] .login-language { right: auto; left: 18px; }
+
+    /* Official Logo */
+    .brand-logo {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1;
+      margin-bottom: 22px;
+      display: inline-block;
+      user-select: none;
+    }
+    .brand-logo .brand-blue {
+      color: #0066FF;
+    }
+    .brand-logo .brand-orange {
+      color: #FF6B00;
+    }
+
+    .confidential-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #0066FF;
+      margin-bottom: 12px;
+    }
+
+    .login-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.28;
+      color: #0F172A;
+      margin-bottom: 18px;
+      letter-spacing: -0.4px;
+    }
+
+    .divider {
+      height: 1px;
+      background: #E2E8F0;
+      margin-bottom: 14px;
+    }
+
+    .round-sub {
+      font-size: 13px;
+      font-weight: 600;
+      color: #64748B;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #0066FF;
+      margin-bottom: 7px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 13px 15px;
+      font-size: 14px;
+      font-family: inherit;
+      border-radius: 8px;
+      border: 1px solid #CBD5E1;
+      outline: none;
+      transition: all 0.2s ease;
+      color: #0F172A;
+    }
+
+    .form-input.login-user-input {
+      background: #FFFFFF;
+    }
+
+    .form-input.password-input {
+      background: #FFFFFF;
+    }
+
+    .form-input:focus {
+      border-color: #0066FF;
+      box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
+    }
+
+    .form-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #0066FF;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 14.5px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0, 102, 255, 0.28);
+      transition: all 0.2s ease;
+      margin-top: 6px;
+    }
+
+    .btn-submit:hover {
+      background: #0052CC;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 102, 255, 0.35);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .error-alert {
+      display: none;
+      background: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      color: #B91C1C;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .legal-footer {
+      margin-top: 28px;
+      font-size: 11px;
+      line-height: 1.55;
+      color: #64748B;
+    }
+
+    @media (max-width: 520px) {
+      .login-card { padding: 72px 22px 30px; border-radius: 14px; }
+      .login-language { top: 16px; right: 16px; }
+      html[dir="rtl"] .login-language { right: auto; left: 16px; }
+      .login-title { font-size: 20px; letter-spacing: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-card">
+      <select class="login-language glemo-lang-select" id="loginLangSelect" aria-label="Select Language" onchange="setGlemoLanguage(this.value)">
+        <option value="en">EN</option>
+        <option value="pt">PT</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+        <option value="ar">AR</option>
+      </select>
+      <div class="brand-logo"><span class="brand-blue">glem</span><span class="brand-orange">O</span></div>
+      
+      <div class="confidential-tag">CONFIDENTIAL - DATA ROOM</div>
+      
+      <h1 class="login-title">Asset-class-neutral liquidity and distribution rail for tokenized real-world assets.</h1>
+      
+      <div class="divider"></div>
+      
+      <div class="round-sub">pre-seed round</div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginUser">LOGIN / FUND NAME</label>
+          <input type="text" id="loginUser" class="form-input login-user-input" placeholder="Enter fund name or login" autocomplete="username" autofocus required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">PASSWORD</label>
+          <input type="password" id="loginPassword" class="form-input password-input" placeholder="Enter access password" autocomplete="current-password" required>
+          <div style="font-size:11px;color:#64748B;margin-top:5px;display:flex;justify-content:space-between;">
+            <span>Pre-seed demo password: <strong style="color:#0066FF;">preseed</strong></span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Enter Data Room</button>
+
+        <div class="error-alert" id="errorMsg">Incorrect password. Please enter the pre-seed access password (preseed).</div>
+      </form>
+
+      <div class="legal-footer">
+        Authorized investor access only. Materials are confidential and may not be forwarded, copied or redistributed without written permission from GlemO.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const AUTH_KEY = "glemo_data_room_v5_access";
+
+    function handleLogin(e) {
+      if (e) e.preventDefault();
+      
+      const user = (document.getElementById('loginUser').value || '').trim();
+      const pass = (document.getElementById('loginPassword').value || '').trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      // Static prototype gate only. Production access requires server-side authentication.
+      const validPass = ['preseed'];
+      const isPassValid = validPass.includes(pass.toLowerCase());
+
+      if (!isPassValid) {
+        errorMsg.style.display = 'block';
+        errorMsg.innerText = 'Incorrect password. Please enter the pre-seed access password.';
+        if (window.GlemoI18n) window.GlemoI18n.applyLanguage(window.GlemoI18n.getLanguage());
+        document.getElementById('loginPassword').focus();
+        return;
+      }
+
+      errorMsg.style.display = 'none';
+
+      // Keep access valid across internal links and new tabs for 24 hours.
+      const authPayload = {
+        authorized: true,
+        user: user || 'glemo-vc',
+        timestamp: Date.now(),
+        expiresAt: Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+      };
+
+      sessionStorage.setItem(AUTH_KEY, JSON.stringify(authPayload));
+      localStorage.setItem(AUTH_KEY, JSON.stringify(authPayload));
+      sessionStorage.setItem('glemo_auth', 'true');
+      sessionStorage.setItem('glemo_user', user || 'glemo-vc');
+
+      // Check redirection
+      const urlParams = new URLSearchParams(window.location.search);
+      let nextUrl = urlParams.get('next');
+      const isSafeRelativePath = nextUrl &&
+        !nextUrl.includes('login.html') &&
+        !nextUrl.includes('..') &&
+        !nextUrl.includes('\\') &&
+        !nextUrl.startsWith('//') &&
+        !/^[a-z][a-z0-9+.-]*:/i.test(nextUrl);
+      if (!isSafeRelativePath) {
+        nextUrl = 'index.html';
+      }
+
+      window.location.href = nextUrl;
+    }
+  </script>
+  <script src="glemo-i18n.js?v=2.2.1"></script>
+  <script src="i18n-overrides.js?v=2.2.2"></script>
+</body>
+</html>

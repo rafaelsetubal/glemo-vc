@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040">
+<rect width="1600" height="1040" fill="#fff"/>
+<rect width="1600" height="94" fill="#F7F8F9"/>
+<text x="56" y="52" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#1F2937">DFD 05 - Transaction Layer and Public Proof</text>
+<text x="56" y="78" font-family="Arial, sans-serif" font-size="20" fill="#5F657D">Private ledgers hold full details while public explorer declares sanitized platform activity.</text>
+<text x="1355" y="54" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#0059FF">GlemO RWA V4.7</text>
+<rect x="70" y="175" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="70" y="175" width="8" height="175" fill="#0059FF"/>
+<text x="94" y="213" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">1. Actor action</text>
+<text x="94" y="243" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">Order, issuance, redemption, validator</text>
+<text x="94" y="263" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">action or SaaS event</text>
+<rect x="565" y="175" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="565" y="175" width="8" height="175" fill="#F15C00"/>
+<text x="589" y="213" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">2. Private record</text>
+<text x="589" y="243" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">Full details saved by actor permission</text>
+<text x="589" y="263" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">scope</text>
+<rect x="1060" y="175" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="1060" y="175" width="8" height="175" fill="#0059FF"/>
+<text x="1084" y="213" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">3. Policy check</text>
+<text x="1084" y="243" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">KYC, offering rules, compliance and admin</text>
+<text x="1084" y="263" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">clearance</text>
+<rect x="70" y="535" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="70" y="535" width="8" height="175" fill="#F15C00"/>
+<text x="94" y="573" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">4. Rail event</text>
+<text x="94" y="603" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">Payment, custody, Ethereum anchor, Base</text>
+<text x="94" y="623" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">settlement or off chain record</text>
+<rect x="565" y="535" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="565" y="535" width="8" height="175" fill="#0059FF"/>
+<text x="589" y="573" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">5. Public declaration</text>
+<text x="589" y="603" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">Sanitized event, amount band, proof hash</text>
+<text x="589" y="623" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">and status</text>
+<rect x="1060" y="535" width="410" height="175" rx="16" fill="#FFFFFF" stroke="#D9E0E7" stroke-width="2"/>
+<rect x="1060" y="535" width="8" height="175" fill="#F15C00"/>
+<text x="1084" y="573" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1F2937">6. Reporting</text>
+<text x="1084" y="603" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">Statements, management reports and</text>
+<text x="1084" y="623" font-family="Arial, sans-serif" font-size="14" fill="#5F657D">reconciliation exports</text>
+<rect x="120" y="865" width="245" height="60" rx="12" fill="#FFF4EC" stroke="#F3CFAE" stroke-width="2"/>
+<text x="136" y="901" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Private actor ledgers</text>
+<rect x="405" y="865" width="245" height="60" rx="12" fill="#FFF4EC" stroke="#F3CFAE" stroke-width="2"/>
+<text x="421" y="901" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Policy engine</text>
+<rect x="690" y="865" width="245" height="60" rx="12" fill="#FFF4EC" stroke="#F3CFAE" stroke-width="2"/>
+<text x="706" y="901" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Rail events</text>
+<rect x="975" y="865" width="245" height="60" rx="12" fill="#FFF4EC" stroke="#F3CFAE" stroke-width="2"/>
+<text x="991" y="901" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Public explorer</text>
+<rect x="1260" y="865" width="245" height="60" rx="12" fill="#FFF4EC" stroke="#F3CFAE" stroke-width="2"/>
+<text x="1276" y="901" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Reports</text>
+</svg>

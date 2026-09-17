@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#f7f4ef"/>
+<text x="60" y="96" font-family="Arial, sans-serif" font-size="46" font-weight="800" fill="#16212d">DFD 01 - Platform Context and Actor Boundaries</text>
+<text x="60" y="146" font-family="Arial, sans-serif" font-size="27" font-weight="500" fill="#677381">How the main actors exchange information through the RWA platform.</text>
+<line x1="60" y1="176" x2="1860" y2="176" stroke="#e5dcd0" stroke-width="3"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#677381"/></marker></defs>
+<line x1="450" y1="340" x2="710" y2="475" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="460.0" y="382.5" width="240" height="50" rx="8" fill="#fffdfa" stroke="#e5dcd0"/>
+<text x="478.0" y="402.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">browsing, wallet, KYC,</text>
+<text x="478.0" y="422.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">orders</text>
+<line x1="450" y1="735" x2="710" y2="585" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="460.0" y="635.0" width="240" height="50" rx="8" fill="#fffdfa" stroke="#e5dcd0"/>
+<text x="478.0" y="655.0" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">assets, contracts, rules,</text>
+<text x="478.0" y="675.0" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">liquidity</text>
+<line x1="1210" y1="475" x2="1460" y2="340" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1215.0" y="382.5" width="240" height="50" rx="8" fill="#fffdfa" stroke="#e5dcd0"/>
+<text x="1233.0" y="402.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">validation package and</text>
+<text x="1233.0" y="422.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">evidence</text>
+<line x1="1210" y1="585" x2="1460" y2="735" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1215.0" y="635.0" width="240" height="50" rx="8" fill="#fffdfa" stroke="#e5dcd0"/>
+<text x="1233.0" y="655.0" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">publication queue and</text>
+<text x="1233.0" y="675.0" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">reports</text>
+<line x1="1460" y1="430" x2="1210" y2="505" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="1215.0" y="442.5" width="240" height="50" rx="8" fill="#fffdfa" stroke="#e5dcd0"/>
+<text x="1233.0" y="462.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">opinion: clear, condition</text>
+<text x="1233.0" y="482.5" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#677381">or block</text>
+<rect x="90" y="250" width="360" height="180" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="90" y="250" width="10" height="180" rx="5" fill="#315f9e"/>
+<text x="124" y="310" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Visitor / Investor</text>
+<text x="124" y="356" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Browses offerings. Invests only</text>
+<text x="124" y="388" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">after wallet, registration, KYC</text>
+<text x="124" y="420" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">and investor profile.</text>
+<rect x="90" y="650" width="360" height="180" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="90" y="650" width="10" height="180" rx="5" fill="#f28c28"/>
+<text x="124" y="710" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Originator / Client</text>
+<text x="124" y="756" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Creates offerings, manages assets,</text>
+<text x="124" y="788" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">defines rules and provides</text>
+<text x="124" y="820" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">required liquidity.</text>
+<rect x="710" y="410" width="500" height="250" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="710" y="410" width="10" height="250" rx="5" fill="#17212c"/>
+<text x="744" y="470" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">RWA Platform</text>
+<text x="744" y="516" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Controls offerings, eligibility,</text>
+<text x="744" y="548" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">validator gates, reporting, ledger</text>
+<text x="744" y="580" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">and token reference.</text>
+<rect x="1460" y="250" width="360" height="180" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="1460" y="250" width="10" height="180" rx="5" fill="#12845f"/>
+<text x="1494" y="310" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Validator / Insurer</text>
+<text x="1494" y="356" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Audits originator, documents,</text>
+<text x="1494" y="388" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">liquidity rules and publication</text>
+<text x="1494" y="420" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">blockers.</text>
+<rect x="1460" y="650" width="360" height="180" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="1460" y="650" width="10" height="180" rx="5" fill="#b53c3c"/>
+<text x="1494" y="710" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Central Admin</text>
+<text x="1494" y="756" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Publishes offerings, controls</text>
+<text x="1494" y="788" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">users, dashboards, governance and</text>
+<text x="1494" y="820" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">exceptions.</text>
+</svg>

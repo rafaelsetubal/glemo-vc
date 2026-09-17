@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="auth-guard.js?v=auth-6"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>RWA Platform Prototype Package - Product Readiness Platform V4.7</title>
+  <link rel="icon" href="../favicon.ico?v=go-20260914" />
+  <style>
+    :root {
+      --bg:var(--color-neutral-50);
+      --surface:var(--color-neutral-0);
+      --soft:var(--surface-subtle);
+      --ink:var(--color-neutral-900);
+      --muted:var(--color-neutral-600);
+      --line:var(--color-neutral-100);
+      --orange:var(--color-brand-orange);
+      --orange-dark:var(--color-brand-orange);
+      --green:var(--color-semantic-success);
+      --blue:var(--color-brand-blue);
+      --shadow:0 18px 50px rgba(61,42,21,.08);
+    }
+    * { box-sizing:border-box; }
+    *:before, *:after { box-sizing:border-box; }
+    html { min-height:100%; -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+    body {
+      margin:0;
+      min-width:320px;
+      min-height:100%;
+      overflow-x:hidden;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      color:var(--ink);
+      background:linear-gradient(180deg,#fff8ef 0%,var(--bg) 58%);
+    }
+    .language-toggle {
+      position:fixed;
+      top:12px;
+      left:12px;
+      z-index:50;
+      border:1px solid var(--line);
+      background:var(--color-neutral-0);
+      color:var(--ink);
+      border-radius:7px;
+      padding:9px 12px;
+      font-weight:900;
+      box-shadow:0 10px 28px rgba(61,42,21,.12);
+      cursor:pointer;
+      min-height:44px;
+      touch-action:manipulation;
+    }
+    a { color:inherit; text-decoration:none; }
+    .wrap { max-width:1180px; margin:0 auto; padding:72px 16px 36px; }
+    header { display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:28px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:900; }
+    .brand > div:last-child { min-width:0; }
+    .logo { width:42px; height:42px; border-radius:8px; background:linear-gradient(135deg,var(--orange),#ffd08d); display:grid; place-items:center; color:#fff; }
+    .tag { display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:7px 11px; color:var(--color-neutral-700); background:var(--color-neutral-0); font-size:12px; font-weight:850; }
+    .hero { display:grid; grid-template-columns:1fr; gap:14px; align-items:stretch; margin-bottom:18px; }
+    .hero-main, .panel, .option { background:var(--surface); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); }
+    .hero-main { padding:22px; min-height:300px; display:flex; flex-direction:column; justify-content:space-between; }
+    .eyebrow { color:var(--orange-dark); text-transform:uppercase; letter-spacing:.08em; font-size:12px; font-weight:900; }
+    h1 { margin:14px 0 14px; font-size:36px; line-height:1.08; letter-spacing:0; overflow-wrap:anywhere; }
+    p { margin:0; color:var(--muted); line-height:1.48; }
+    .lead { font-size:16px; max-width:780px; }
+    .actions { display:flex; gap:10px; flex-wrap:wrap; margin-top:28px; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; min-height:44px; border-radius:7px; border:1px solid var(--line); background:var(--color-neutral-0); padding:10px 14px; font-weight:850; touch-action:manipulation; }
+    .btn.primary { background:var(--orange); border-color:var(--orange); color:#fff; box-shadow:0 10px 22px rgba(242,140,40,.22); }
+    .notice { display:inline-flex; align-items:center; gap:8px; width:max-content; max-width:100%; border:1px solid var(--color-semantic-warning-border); background:var(--color-semantic-warning-subtle); color:var(--color-semantic-warning); border-radius:999px; padding:7px 11px; font-size:12px; font-weight:900; }
+    .notice strong { color:var(--color-semantic-warning); text-transform:uppercase; letter-spacing:.04em; }
+    .panel { padding:22px; }
+    .panel h2 { margin:0 0 14px; font-size:20px; }
+    .facts { display:grid; gap:12px; }
+    .fact { display:flex; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); padding-bottom:12px; }
+    .fact:last-child { border-bottom:0; padding-bottom:0; }
+    .fact span { color:var(--muted); }
+    .fact strong { text-align:right; overflow-wrap:anywhere; }
+    .grid { display:grid; grid-template-columns:1fr; gap:14px; margin-top:18px; }
+    .briefing { display:grid; grid-template-columns:1fr; gap:14px; margin:18px 0; }
+    .briefing-card { background:var(--surface); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); padding:18px; min-width:0; }
+    .briefing-card h2 { margin:0 0 8px; font-size:19px; }
+    .briefing-card strong { color:var(--ink); }
+    .journey-strip { display:grid; grid-template-columns:1fr; gap:10px; margin-top:12px; }
+    .journey-step { display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); background:var(--color-neutral-0); border-radius:8px; padding:12px; }
+    .step-code { flex:0 0 30px; width:30px; height:30px; display:grid; place-items:center; border-radius:7px; background:var(--soft); color:var(--orange-dark); font-size:12px; font-weight:900; }
+    .option { padding:18px; min-height:156px; display:flex; flex-direction:column; justify-content:space-between; min-width:0; touch-action:manipulation; }
+    .option h3 { margin:0 0 8px; font-size:18px; }
+    .option p { font-size:14px; }
+    .option .top { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .badge { display:inline-flex; border-radius:999px; padding:5px 9px; font-size:12px; font-weight:850; background:#eef5ff; color:var(--blue); white-space:nowrap; }
+    .badge.green { background:#eaf8f1; color:var(--green); }
+    .badge.orange { background:var(--soft); color:var(--orange-dark); }
+    footer { margin-top:22px; color:var(--color-neutral-500); font-size:13px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    @media (min-width:760px) {
+      .wrap { padding:72px 28px 56px; }
+      header { flex-direction:row; align-items:center; margin-bottom:42px; }
+      .lead { font-size:18px; }
+      .hero-main { padding:34px; min-height:320px; }
+    }
+    @media (min-width:900px) {
+      .hero { grid-template-columns:1fr .82fr; gap:28px; margin-bottom:22px; }
+      .grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .briefing { grid-template-columns:repeat(3,minmax(0,1fr)); }
+      .journey-strip { grid-template-columns:repeat(4,minmax(0,1fr)); }
+      h1 { font-size:48px; line-height:1.04; }
+      .option { min-height:170px; }
+    }
+    @media (max-width:520px) {
+      .actions { flex-direction:column; }
+      .btn { width:100%; }
+      .notice { width:100%; border-radius:8px; align-items:flex-start; }
+      .fact { flex-direction:column; gap:4px; }
+      .fact strong { text-align:left; }
+      .option .top { flex-direction:column; gap:8px; }
+      .language-toggle { top:10px; left:10px; }
+    }
+    @media (hover:hover) {
+      .option:hover, .btn:hover { border-color:var(--color-neutral-200); background:var(--surface-subtle); }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *, *:before, *:after { scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+    }
+  </style>
+
+<style id="glemo-lang-fix">.language-toggle{top:52px !important;}@media(max-width:640px){.language-toggle{top:78px !important;}}</style>
+
+<style id="glemo-rtl">
+html[dir="rtl"] body{direction:rtl;text-align:right;}
+html[dir="rtl"] .language-toggle{left:auto !important;right:12px !important;}
+@media(max-width:640px){html[dir="rtl"] .language-toggle{right:auto !important;left:12px !important;}}
+html[dir="rtl"] #glemo-dr-bar{flex-direction:row-reverse;}
+html[dir="rtl"] table th,html[dir="rtl"] table td{text-align:right;}
+html[dir="rtl"] input,html[dir="rtl"] select,html[dir="rtl"] textarea{direction:rtl;text-align:right;}
+html[dir="rtl"]{font-family:"Noto Naskh Arabic","Segoe UI",Tahoma,Arial,sans-serif;}
+</style>
+<style id="glemo-ui-system-v1-2-entry">
+  :root {
+    --bg:#F7F8F9;
+    --surface:#FFFFFF;
+    --soft:#FFF4EC;
+    --ink:var(--color-neutral-900);
+    --muted:#5F657D;
+    --line:#E9EDEE;
+    --orange:#F15C00;
+    --orange-dark:#F15C00;
+    --green:var(--color-semantic-success);
+    --blue:#0059FF;
+    --shadow:0 16px 44px rgba(31,41,55,.08);
+  }
+  body {
+    background:#F7F8F9;
+    color:var(--ink);
+    font-family:"Open Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  }
+  body:before {
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:60;
+    height:3px;
+    background:linear-gradient(90deg,#0059FF,#00BAFF,#00FFA2,#CCCF0A,#FF9A00,#F15C00);
+    background-size:200% 100%;
+    animation:glemoSpectrumLine 16s linear infinite;
+  }
+  @keyframes glemoSpectrumLine {
+    from { background-position:0 0; }
+    to { background-position:200% 0; }
+  }
+  strong,b,.btn,.badge,.tag,.logo,.eyebrow,.step-code { font-weight:700 !important; }
+  h1,h2,h3 { color:var(--ink); font-weight:700; }
+  .hero-main,.panel,.option,.briefing-card,.journey-step {
+    background:#FFFFFF;
+    border-color:#E9EDEE;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+  }
+  .logo {
+    background:#0059FF;
+    border-radius:12px;
+  }
+  .tag,.badge {
+    border-color:#E9EDEE;
+    color:#5F657D;
+  }
+  .notice {
+    border-color:#E9EDEE;
+    background:#FFFFFF;
+    color:#5F657D;
+    border-radius:12px;
+  }
+  .notice strong,.eyebrow { color:#F15C00; }
+  .btn {
+    border-color:#CCD1D7;
+    color:#5F657D;
+    border-radius:12px;
+  }
+  .btn:hover {
+    border-color:#CCD1D7;
+    background:#F7F8F9;
+  }
+  .btn.primary {
+    position:relative;
+    isolation:isolate;
+    background:linear-gradient(180deg,#0A6BFF 0%,#0059FF 100%);
+    border-color:#0059FF;
+    color:#FFFFFF;
+    box-shadow:0 14px 30px rgba(0,89,255,.24), inset 0 1px 0 rgba(255,255,255,.24);
+    transform:translateY(0);
+    transition:transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;
+  }
+  .btn.primary:before {
+    content:"";
+    position:absolute;
+    inset:1px;
+    z-index:-1;
+    border-radius:inherit;
+    background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,0));
+    pointer-events:none;
+  }
+  .btn.primary:hover {
+    background:linear-gradient(180deg,#1678FF 0%,#0163FF 100%);
+    border-color:var(--color-brand-blue);
+    box-shadow:0 18px 36px rgba(0,89,255,.30), inset 0 1px 0 rgba(255,255,255,.28);
+    transform:translateY(-1px);
+  }
+  .btn.primary:active {
+    transform:translateY(0);
+    box-shadow:0 9px 20px rgba(0,89,255,.22);
+  }
+  .btn.primary:focus-visible {
+    outline:0;
+    box-shadow:0 0 0 4px rgba(0,186,255,.22), 0 16px 34px rgba(0,89,255,.28);
+  }
+  .step-code {
+    background:#FFF4EC;
+    color:#F15C00;
+    border-radius:10px;
+  }
+  #glemo-dr-bar {
+    background:#FFFFFF !important;
+    border-bottom:1px solid #E9EDEE !important;
+    color:#5F657D !important;
+    font-family:"Open Sans", Inter, system-ui, -apple-system, "Segoe UI", Arial, sans-serif !important;
+  }
+  #glemo-dr-bar strong { color:#0059FF !important; }
+  #glemo-dr-bar a {
+    background:#0059FF !important;
+    color:#FFFFFF !important;
+    border-radius:10px !important;
+  }
+  .language-toggle {
+    border-color:#E9EDEE;
+    border-radius:12px;
+    font-weight:700 !important;
+  }
+  @media (prefers-reduced-motion:reduce) {
+    body:before { animation:none; }
+  }
+</style>
+</head>
+<body>
+<div id="glemo-dr-bar" style="position:sticky;top:0;z-index:99999;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;background:var(--surface-dark-default);border-bottom:1px solid var(--surface-dark-border);font-family:Inter,system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:13px;color:var(--color-neutral-100);">
+<span style="display:flex;align-items:center;gap:8px;min-width:0;"><strong style="color:var(--color-brand-light-blue);letter-spacing:.06em;font-size:11px;text-transform:uppercase;">GlemO Data Room</strong><span style="opacity:.75;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Platform wireframe &middot; illustrative</span></span>
+<a href="../html/00_data_room_index.html" style="flex:0 0 auto;color:var(--color-neutral-0);background:var(--color-brand-blue);text-decoration:none;font-weight:700;padding:5px 12px;border-radius:5px;">&larr; Back to Data Room</a>
+</div>
+
+  <select class="language-toggle" id="languageSelect" aria-label="Language" onchange="setLanguage(this.value)"><option value="en">EN</option><option value="pt">PT</option><option value="es">ES</option><option value="fr">FR</option><option value="ar">AR</option></select>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">G</div><div>GlemO RWA<br><span style="color:var(--color-neutral-500);font-size:13px;font-weight:760">Product Briefing</span></div></div>
+      <span class="tag">Product Readiness Platform V4.7 · MVP1 Review</span>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div>
+          <div class="notice"><strong>Product prototype</strong><span>Illustrative platform wireframe and beta test environment</span></div>
+          <div class="eyebrow" style="margin-top:20px">Before entering the platform</div>
+          <h1>This prototype now reads as a product: commercial front, role journeys, MVP1 controls and future layers.</h1>
+          <p class="lead">Use this entry page to navigate the RWA platform as a product: Product Home, Journey Map, MVP1 scope, operating readiness register, retail client portal, institutional buyer portal, seller organization admin, distribution partner portal, Enterprise AI checkout, billing and revenue operations, transaction clearance, concierge desk, AI operations, compliance case management, rail partner portal, tokenized-asset technical sheet and transaction declaration layer. It is a beta discussion artifact, not production software, an investment offer or a final regulatory implementation.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="app.html#market">Open Product Home</a>
+          <a class="btn" href="app.html#platformSitemap">Journey Map</a>
+          <a class="btn" href="app.html#dataFlowRequirements">DFD & Requirements</a>
+          <a class="btn" href="app.html#mvp1Scope">MVP1 Scope</a>
+          <a class="btn" href="app.html#operatingReadiness">Readiness Register</a>
+          <a class="btn" href="app.html#retailPortal">Retail Client Portal</a>
+          <a class="btn" href="app.html#institutionalPortal">Institutional Portal</a>
+          <a class="btn" href="app.html#sellerOrgAdmin">Seller Admin</a>
+          <a class="btn" href="app.html#billingRevenue">Billing & Revenue</a>
+          <a class="btn" href="app.html#aiOps">AI Ops</a>
+          <a class="btn" href="app.html#complianceCases">Compliance Cases</a>
+          <a class="btn" href="app.html#sellerPlans">Seller Plans</a>
+          <a class="btn" href="app.html#distributionSaas">Distribution SaaS</a>
+          <a class="btn" href="app.html#assetFactSheet">Asset Fact Sheet</a>
+          <a class="btn" href="app.html#roleConsole">View Backoffice Map</a>
+          <a class="btn" href="app.html#actorDashboards">Actor Dashboards</a>
+          <a class="btn" href="app.html#transactionLayer">Transaction Layer</a>
+          <a class="btn" href="app.html#investorGate">View Investor Journey</a>
+          <a class="btn" href="app.html#downloads">Downloads</a>
+        </div>
+      </div>
+      <aside class="panel">
+        <h2>What this prototype shows</h2>
+        <div class="facts">
+          <div class="fact"><span>Purpose</span><strong>Commercial front + transaction layer validation</strong></div>
+          <div class="fact"><span>Sitemap</span><strong>All platform environments, actors and routes</strong></div>
+          <div class="fact"><span>DFD pack</span><strong>10 DFDs + 12 product requirements</strong></div>
+          <div class="fact"><span>MVP1</span><strong>Core now, lite modules, phase 2 later</strong></div>
+          <div class="fact"><span>Default entry</span><strong>Product Home with actor journeys</strong></div>
+          <div class="fact"><span>Retail portal</span><strong>Login, profile, wallets and transactions</strong></div>
+          <div class="fact"><span>Institutional portal</span><strong>Mandates, diligence, allocation and committee workflow</strong></div>
+          <div class="fact"><span>Seller admin</span><strong>Users, signers, plan, billing and internal approvals</strong></div>
+          <div class="fact"><span>Ops layer</span><strong>Billing, AI, concierge, compliance and rails</strong></div>
+          <div class="fact"><span>Product model</span><strong>Offering = Pool or Standalone Asset</strong></div>
+          <div class="fact"><span>User model</span><strong>Investor, originator, validator, admin, treasury</strong></div>
+          <div class="fact"><span>Seller plans</span><strong>Free listing + US$ 990 Enterprise AI</strong></div>
+          <div class="fact"><span>SaaS layer</span><strong>Distribution channels, conversion and incentives</strong></div>
+          <div class="fact"><span>Asset diligence</span><strong>Technical sheet, collateral, history and liquidity</strong></div>
+          <div class="fact"><span>Audit layer</span><strong>Private ledgers + public transaction explorer</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="briefing" aria-label="Prototype briefing">
+      <div class="briefing-card">
+        <h2>Expected Delivery</h2>
+        <p>The platform is expected to organize tokenized real-world asset offerings in a commercial marketplace, supporting both pools and standalone assets with predefined quantity, unit value, eligibility, risk and liquidity rules.</p>
+      </div>
+      <div class="briefing-card">
+        <h2>Usability Intent</h2>
+        <p>The experience is designed to let users browse first, understand each asset, compare risk and then enter the controlled investment gate through wallet connection, registration, KYC and investor profile.</p>
+      </div>
+      <div class="briefing-card">
+        <h2>Beta Scope</h2>
+        <p>Each actor dashboard puts the most important numbers first, then charts, risk signals and action queues. V4.7 keeps the complete product vision visible while separating MVP1 build, manual controls and future expansion layers.</p>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="How to read the prototype">
+      <h2>How to read the wireframe</h2>
+      <div class="journey-strip">
+        <div class="journey-step"><span class="step-code">01</span><div><strong>Open MVP1 Scope</strong><p>See what should be built first, simplified or staged.</p></div></div>
+        <div class="journey-step"><span class="step-code">02</span><div><strong>Open Journey Map</strong><p>See all actor environments and how the platform is organized.</p></div></div>
+        <div class="journey-step"><span class="step-code">03</span><div><strong>Check Readiness</strong><p>See the minimum artifacts and controls required by each actor.</p></div></div>
+        <div class="journey-step"><span class="step-code">04</span><div><strong>Start at Product Home</strong><p>See the thesis, actor journeys, marketplace entry and diversified asset cards.</p></div></div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Prototype launch options">
+      <a class="option" href="app.html#market">
+        <div><div class="top"><h3>Product Home</h3><span class="badge green">Start</span></div><p>Open the commercial entry with thesis, actor journeys, MVP1 status, featured offerings, filters and investor conversion path.</p></div>
+        <strong>Launch Product Home</strong>
+      </a>
+      <a class="option" href="app.html#platformSitemap">
+        <div><div class="top"><h3>Journey Map</h3><span class="badge green">New</span></div><p>Open the complete map of every platform environment, actor group, functional module and operating route.</p></div>
+        <strong>Open Journey Map</strong>
+      </a>
+      <a class="option" href="app.html#dataFlowRequirements">
+        <div><div class="top"><h3>DFD & Requirements</h3><span class="badge green">New</span></div><p>Open the current data flow diagrams, product requirements and traceability between actors, screens, stores and controls.</p></div>
+        <strong>Open DFDs</strong>
+      </a>
+      <a class="option" href="app.html#mvp1Scope">
+        <div><div class="top"><h3>MVP1 Feasible Scope</h3><span class="badge green">New</span></div><p>Open the build plan that separates core MVP1 modules, simplified first-release modules and phase-two platform expansion.</p></div>
+        <strong>Open MVP1 Scope</strong>
+      </a>
+      <a class="option" href="app.html#operatingReadiness">
+        <div><div class="top"><h3>Readiness Register</h3><span class="badge green">New</span></div><p>Open the operating checklist for required artifacts, controls, owners and missing MVP1 platform evidence by actor.</p></div>
+        <strong>Open Readiness</strong>
+      </a>
+      <a class="option" href="app.html#roleConsole">
+        <div><div class="top"><h3>Backoffice Map</h3><span class="badge">Roles</span></div><p>See the permissions and workflows for investor, originator, validator, admin, treasury and ecosystem users.</p></div>
+        <strong>Open Backoffice</strong>
+      </a>
+      <a class="option" href="app.html#actorDashboards">
+        <div><div class="top"><h3>Actor Dashboards</h3><span class="badge green">New</span></div><p>Open the visual dashboards for marketplace, investor, bank, validator, admin, token ops, ecosystem and compliance.</p></div>
+        <strong>Open Dashboards</strong>
+      </a>
+      <a class="option" href="app.html#transactionLayer">
+        <div><div class="top"><h3>Transaction Layer</h3><span class="badge green">New</span></div><p>Open the private actor transaction rooms and public platform explorer for declared activity.</p></div>
+        <strong>Open Explorer</strong>
+      </a>
+      <a class="option" href="app.html#assetFactSheet">
+        <div><div class="top"><h3>Asset Fact Sheet</h3><span class="badge green">New</span></div><p>Open the technical sheet with tokenization history, responsible entities, collateral, evidence, performance and liquidity charts.</p></div>
+        <strong>Open Asset Sheet</strong>
+      </a>
+      <a class="option" href="app.html#retailPortal">
+        <div><div class="top"><h3>Retail Client Portal</h3><span class="badge green">New</span></div><p>Open the consumer account area with login, registration profile, connected wallets, transaction history, documents and account controls.</p></div>
+        <strong>Open Retail Portal</strong>
+      </a>
+      <a class="option" href="app.html#institutionalPortal">
+        <div><div class="top"><h3>Institutional Portal</h3><span class="badge green">New</span></div><p>Open the workspace for funds, family offices and banks with mandate fit, committee workflow, diligence files and allocation requests.</p></div>
+        <strong>Open Institutional</strong>
+      </a>
+      <a class="option" href="app.html#sellerOrgAdmin">
+        <div><div class="top"><h3>Seller Organization Admin</h3><span class="badge green">New</span></div><p>Open the account owner area for seller users, signers, KYB, plan, invoices and internal approvals.</p></div>
+        <strong>Open Seller Admin</strong>
+      </a>
+      <a class="option" href="app.html#distributionPartner">
+        <div><div class="top"><h3>Distribution Partner Portal</h3><span class="badge green">New</span></div><p>Open the channel workspace for attribution, conversion, revenue-share rules, approved assets and transaction leakage.</p></div>
+        <strong>Open Partner Portal</strong>
+      </a>
+      <a class="option" href="app.html#billingRevenue">
+        <div><div class="top"><h3>Billing & Revenue Ops</h3><span class="badge green">New</span></div><p>Open SaaS billing, setup fees, servicing fees, transaction fees, invoices, crypto/card payments and revenue quality metrics.</p></div>
+        <strong>Open Billing</strong>
+      </a>
+      <a class="option" href="app.html#aiOps">
+        <div><div class="top"><h3>AI Operations</h3><span class="badge green">New</span></div><p>Open agent governance, market x-ray workflows, prompt chain, report delivery and quality control.</p></div>
+        <strong>Open AI Ops</strong>
+      </a>
+      <a class="option" href="app.html#conciergeDesk">
+        <div><div class="top"><h3>Concierge Desk</h3><span class="badge green">New</span></div><p>Open the request-based Enterprise AI service desk for private scenarios, reports, client prompts and SLA tracking.</p></div>
+        <strong>Open Concierge</strong>
+      </a>
+      <a class="option" href="app.html#complianceCases">
+        <div><div class="top"><h3>Compliance Cases</h3><span class="badge green">New</span></div><p>Open the case queue for suitability, financial promotion, AML/KYC, disclosure blockers and evidence decisions.</p></div>
+        <strong>Open Cases</strong>
+      </a>
+      <a class="option" href="app.html#transactionClearance">
+        <div><div class="top"><h3>Transaction Clearance</h3><span class="badge green">New</span></div><p>Open the admin queue for seller pre-check, standby transactions, evidence requests and final release decisions.</p></div>
+        <strong>Open Clearance</strong>
+      </a>
+      <a class="option" href="app.html#railPartner">
+        <div><div class="top"><h3>Rail Partner Portal</h3><span class="badge green">New</span></div><p>Open the operational view for custody, card, crypto, banking rails, reconciliation, incidents and fallback routes.</p></div>
+        <strong>Open Rails</strong>
+      </a>
+      <a class="option" href="app.html#ecosystemBuilder">
+        <div><div class="top"><h3>Builder / dApp Portal</h3><span class="badge green">New</span></div><p>Open developer onboarding, API keys, sandbox, plugin review, usage analytics and revenue share.</p></div>
+        <strong>Open Builder Portal</strong>
+      </a>
+      <a class="option" href="app.html#sellerPlans">
+        <div><div class="top"><h3>Seller Plans</h3><span class="badge green">New</span></div><p>Open the two-plan seller offer: Free listing and US$ 990 Enterprise AI request with cart, card/crypto payment path, market x-ray, benchmarking and private scenario concierge.</p></div>
+        <strong>Open Seller Plans</strong>
+      </a>
+      <a class="option" href="app.html#distributionSaas">
+        <div><div class="top"><h3>Distribution SaaS</h3><span class="badge green">New</span></div><p>Open the enterprise console for official asset channels, conversion analytics, transaction leakage and incentive management.</p></div>
+        <strong>Open SaaS Console</strong>
+      </a>
+      <a class="option" href="app.html#investorGate">
+        <div><div class="top"><h3>Investor Flow</h3><span class="badge">Wallet + KYC</span></div><p>Browse, connect wallet, register, complete KYC, define investor profile and access eligible offerings.</p></div>
+        <strong>Open Investor Gate</strong>
+      </a>
+      <a class="option" href="app.html#assetFactory">
+        <div><div class="top"><h3>Originator Asset Factory</h3><span class="badge orange">New rule</span></div><p>Create either a pool of contracts or a standalone tokenized asset with predefined quantity and unit value.</p></div>
+        <strong>Open Asset Factory</strong>
+      </a>
+      <a class="option" href="app.html#validatorDesk">
+        <div><div class="top"><h3>Validator Desk</h3><span class="badge">Audit</span></div><p>Review originator, asset, contract, liquidity, redemption and publication requirements before launch.</p></div>
+        <strong>Open Validator</strong>
+      </a>
+      <a class="option" href="app.html#adminDashboard">
+        <div><div class="top"><h3>Admin Executive</h3><span class="badge">Dashboard</span></div><p>Track platform performance, originator ranking, blocked offerings, validator exceptions and reporting.</p></div>
+        <strong>Open Admin</strong>
+      </a>
+      <a class="option" href="app.html#reports">
+        <div><div class="top"><h3>Reports</h3><span class="badge">Search</span></div><p>Filter by actor, operation type, date, contract, standalone asset and open text search.</p></div>
+        <strong>Open Reports</strong>
+      </a>
+      <a class="option" href="app.html#downloads">
+        <div><div class="top"><h3>Documentation</h3><span class="badge orange">Downloads</span></div><p>Open reviewed documentation and flowcharts aligned to the marketplace and backoffice prototype.</p></div>
+        <strong>Open Downloads</strong>
+      </a>
+      <a class="option" href="downloads/RWA_Product_DFD_and_Requirements_V4_7_EN.zip" download>
+        <div><div class="top"><h3>Full Package</h3><span class="badge green">ZIP</span></div><p>Download documentation, Markdown/HTML versions and all flowcharts in PNG and SVG.</p></div>
+        <strong>Download ZIP</strong>
+      </a>
+    </section>
+
+    <footer>
+      <span>Disclaimer: illustrative beta wireframe for architecture, product and partnership discussion only.</span>
+      <span>Open locally by double-clicking this root index.html file.</span>
+    </footer>
+  </div>
+  <script>
+    function packageBaseUrl() {
+      const base = new URL(window.location.href);
+      const lastSegment = base.pathname.split('/').pop();
+      if (!base.pathname.endsWith('/') && lastSegment && !lastSegment.includes('.')) {
+        base.pathname = base.pathname + '/';
+      }
+      return base;
+    }
+    document.querySelectorAll('a[href]').forEach(link => {
+      const rawHref = link.getAttribute('href');
+      if (!rawHref || rawHref.startsWith('#') || /^[a-z]+:/i.test(rawHref)) return;
+      link.href = new URL(rawHref, packageBaseUrl()).href;
+    });
+    const translationsES = {
+      'Launch Platform':'Iniciar Plataforma',
+      'Open Asset Factory':'Abrir Fábrica de Activos',
+      'Prototype Briefing':'Informe del Prototipo',
+      'Product Readiness V4.7 · Beta Wireframe':'Alta Fidelidad V4.7 · Wireframe Beta',
+      'Under construction':'En construcción',
+      'Illustrative platform wireframe and beta test environment':'Wireframe ilustrativo de la plataforma y entorno de pruebas beta',
+      'Before entering the platform':'Antes de entrar en la plataforma',
+      'This prototype illustrates the expected platform experience and usability.':'Este prototipo ilustra la experiencia y usabilidad esperadas de la plataforma.',
+      'Use this entry page to understand what the RWA platform is expected to deliver before navigating the product screens. The prototype demonstrates how investors, approved originators such as banks, validators and central administrators may interact with tokenized offerings, but it is not production software, an investment offer or a final regulatory implementation.':'Use esta página de entrada para comprender lo que se espera que ofrezca la plataforma RWA antes de navegar por las pantallas del producto. El prototipo demuestra cómo los inversores, los originadores aprobados como los bancos, los validadores y los administradores centrales pueden interactuar con ofertas tokenizadas, pero no es software de producción, ni una oferta de inversión, ni una implementación regulatoria definitiva.',
+      'Enter Platform Wireframe':'Entrar al Wireframe de la Plataforma',
+      'View Investor Journey':'Ver el Recorrido del Inversor',
+      'Downloads':'Descargas',
+      'Read README':'Leer el README',
+      'What this prototype shows':'Qué muestra este prototipo',
+      'Purpose':'Propósito',
+      'Architecture, product and usability validation':'Validación de arquitectura, producto y usabilidad',
+      'Default entry':'Entrada predeterminada',
+      'Multi-asset investor marketplace':'Marketplace multiactivo para inversores',
+      'Product model':'Modelo de producto',
+      'Offering = Pool or Standalone Asset':'Oferta = Pool o Activo Independiente',
+      'Access logic':'Lógica de acceso',
+      'Wallet + KYC + investor profile':'Wallet + KYC + perfil de inversor',
+      'Safety layer':'Capa de seguridad',
+      'Validator triage before publication':'Triaje del validador antes de la publicación',
+      'Expected Delivery':'Entrega Esperada',
+      'The platform is expected to organize tokenized real-world asset offerings in a clear marketplace, supporting both pools and standalone assets with predefined quantity, unit value, eligibility, risk and liquidity rules.':'Se espera que la plataforma organice ofertas tokenizadas de activos del mundo real en un marketplace claro, admitiendo tanto pools como activos independientes con cantidad, valor unitario, elegibilidad, riesgo y reglas de liquidez predefinidos.',
+      'Usability Intent':'Objetivo de Usabilidad',
+      'The experience is designed to let users browse first, understand each asset, compare risk and then enter the controlled investment gate through wallet connection, registration, KYC and investor profile.':'La experiencia está diseñada para que los usuarios primero exploren, comprendan cada activo, comparen el riesgo y luego accedan a la puerta de inversión controlada mediante la conexión de la wallet, el registro, el KYC y el perfil de inversor.',
+      'Beta Scope':'Alcance de la Beta',
+      'This wireframe is a discussion artifact. Values, assets, yields, originators, validators and flows are illustrative placeholders used to validate product behavior with stakeholders.':'Este wireframe es un artefacto de discusión. Los valores, activos, rendimientos, originadores, validadores y flujos son marcadores ilustrativos utilizados para validar el comportamiento del producto con las partes interesadas.',
+      'How to read the wireframe':'Cómo leer el wireframe',
+      'Start at Marketplace':'Comience en el Marketplace',
+      'See the public investor-facing experience and diversified asset cards.':'Vea la experiencia pública orientada al inversor y las tarjetas de activos diversificados.',
+      'Open Investor Gate':'Abrir la Puerta del Inversor',
+      'Review wallet, registration, KYC and investor profile controls.':'Revise los controles de wallet, registro, KYC y perfil de inversor.',
+      'Review Originator + Validator':'Revisar Originador + Validador',
+      'Understand asset creation, document checks and publication blockers.':'Comprenda la creación de activos, la verificación documental y los bloqueos de publicación.',
+      'Check Admin + Reports':'Revisar Administración + Informes',
+      'Inspect governance, permissions, dashboards, reports and audit visibility.':'Inspeccione la gobernanza, los permisos, los paneles, los informes y la visibilidad de auditoría.',
+      'Full Platform':'Plataforma Completa',
+      'Start':'Inicio',
+      'Open the prototype on the investor marketplace, the first public screen of the platform.':'Abra el prototipo en el marketplace del inversor, la primera pantalla pública de la plataforma.',
+      'Investor Flow':'Flujo del Inversor',
+      'Wallet + KYC':'Wallet + KYC',
+      'Browse, connect wallet, register, complete KYC, define investor profile and access eligible offerings.':'Explore, conecte la wallet, regístrese, complete el KYC, defina el perfil de inversor y acceda a las ofertas elegibles.',
+      'Originator Asset Factory':'Fábrica de Activos del Originador',
+      'New rule':'Nueva regla',
+      'Create either a pool of contracts or a standalone tokenized asset with predefined quantity and unit value.':'Cree un pool de contratos o un activo tokenizado independiente con cantidad y valor unitario predefinidos.',
+      'Validator Desk':'Mesa del Validador',
+      'Audit':'Auditoría',
+      'Review originator, asset, contract, liquidity, redemption and publication requirements before launch.':'Revise los requisitos de originador, activo, contrato, liquidez, rescate y publicación antes del lanzamiento.',
+      'Open Validator':'Abrir Validador',
+      'Admin Executive':'Administración Ejecutiva',
+      'Dashboard':'Panel',
+      'Track platform performance, originator ranking, blocked offerings, validator exceptions and reporting.':'Siga el desempeño de la plataforma, el ranking de originadores, las ofertas bloqueadas, las excepciones del validador y los informes.',
+      'Open Admin':'Abrir Administración',
+      'Reports':'Informes',
+      'Search':'Búsqueda',
+      'Filter by actor, operation type, date, contract, standalone asset and open text search.':'Filtre por actor, tipo de operación, fecha, contrato, activo independiente y búsqueda de texto libre.',
+      'Open Reports':'Abrir Informes',
+      'Documentation':'Documentación',
+      'Open current V4.7 DFD, requirements and flowcharts aligned to the platform prototype.':'Abra la documentación DFD V4.7 actual y los diagramas alineados con el prototipo de plataforma.',
+      'Open Downloads':'Abrir Descargas',
+      'Full Package':'Paquete Completo',
+      'ZIP':'ZIP',
+      'Download documentation, Markdown/HTML versions and all flowcharts in PNG and SVG.':'Descargue la documentación, las versiones Markdown/HTML y todos los diagramas en PNG y SVG.',
+      'Download ZIP':'Descargar ZIP',
+      'Disclaimer: illustrative beta wireframe for architecture, product and partnership discussion only.':'Aviso: wireframe beta ilustrativo destinado únicamente a la discusión de arquitectura, producto y alianzas.',
+      'Open locally by double-clicking this root index.html file.':'Ábralo localmente haciendo doble clic en este archivo index.html raíz.'
+    };
+    const translationsFR = {
+      'Launch Platform':'Lancer la Plateforme',
+      'Open Asset Factory':'Ouvrir la Fabrique d\'Actifs',
+      'Prototype Briefing':'Note sur le Prototype',
+      'Product Readiness V4.7 · Beta Wireframe':'Prototype Produit V4.7 · Wireframe Bêta',
+      'Under construction':'En construction',
+      'Illustrative platform wireframe and beta test environment':'Wireframe illustratif de la plateforme et environnement de test bêta',
+      'Before entering the platform':'Avant d\'entrer dans la plateforme',
+      'This prototype illustrates the expected platform experience and usability.':'Ce prototype illustre l\'expérience et l\'ergonomie attendues de la plateforme.',
+      'Use this entry page to understand what the RWA platform is expected to deliver before navigating the product screens. The prototype demonstrates how investors, approved originators such as banks, validators and central administrators may interact with tokenized offerings, but it is not production software, an investment offer or a final regulatory implementation.':'Utilisez cette page d\'entrée pour comprendre ce que la plateforme RWA est censée offrir avant de parcourir les écrans du produit. Le prototype montre comment les investisseurs, les originateurs approuvés tels que les banques, les validateurs et les administrateurs centraux peuvent interagir avec des offres tokenisées, mais il ne s\'agit ni d\'un logiciel de production, ni d\'une offre d\'investissement, ni d\'une mise en œuvre réglementaire définitive.',
+      'Enter Platform Wireframe':'Accéder au Wireframe de la Plateforme',
+      'View Investor Journey':'Voir le Parcours Investisseur',
+      'Downloads':'Téléchargements',
+      'Read README':'Lire le README',
+      'What this prototype shows':'Ce que montre ce prototype',
+      'Purpose':'Objectif',
+      'Architecture, product and usability validation':'Validation de l\'architecture, du produit et de l\'ergonomie',
+      'Default entry':'Entrée par défaut',
+      'Multi-asset investor marketplace':'Marketplace multi-actifs pour investisseurs',
+      'Product model':'Modèle de produit',
+      'Offering = Pool or Standalone Asset':'Offre = Pool ou Actif Autonome',
+      'Access logic':'Logique d\'accès',
+      'Wallet + KYC + investor profile':'Wallet + KYC + profil investisseur',
+      'Safety layer':'Couche de sécurité',
+      'Validator triage before publication':'Triage du validateur avant publication',
+      'Expected Delivery':'Livraison Attendue',
+      'The platform is expected to organize tokenized real-world asset offerings in a clear marketplace, supporting both pools and standalone assets with predefined quantity, unit value, eligibility, risk and liquidity rules.':'La plateforme doit organiser les offres tokenisées d\'actifs du monde réel dans un marketplace clair, prenant en charge à la fois les pools et les actifs autonomes avec quantité, valeur unitaire, éligibilité, risque et règles de liquidité prédéfinis.',
+      'Usability Intent':'Objectif d\'Ergonomie',
+      'The experience is designed to let users browse first, understand each asset, compare risk and then enter the controlled investment gate through wallet connection, registration, KYC and investor profile.':'L\'expérience est conçue pour que les utilisateurs parcourent d\'abord, comprennent chaque actif, comparent le risque, puis franchissent la porte d\'investissement contrôlée via la connexion du wallet, l\'inscription, le KYC et le profil investisseur.',
+      'Beta Scope':'Périmètre de la Bêta',
+      'This wireframe is a discussion artifact. Values, assets, yields, originators, validators and flows are illustrative placeholders used to validate product behavior with stakeholders.':'Ce wireframe est un support de discussion. Les valeurs, actifs, rendements, originateurs, validateurs et flux sont des éléments illustratifs servant à valider le comportement du produit avec les parties prenantes.',
+      'How to read the wireframe':'Comment lire le wireframe',
+      'Start at Marketplace':'Commencez par le Marketplace',
+      'See the public investor-facing experience and diversified asset cards.':'Découvrez l\'expérience publique destinée à l\'investisseur et les fiches d\'actifs diversifiés.',
+      'Open Investor Gate':'Ouvrir la Porte Investisseur',
+      'Review wallet, registration, KYC and investor profile controls.':'Examinez les contrôles de wallet, d\'inscription, de KYC et de profil investisseur.',
+      'Review Originator + Validator':'Examiner Originateur + Validateur',
+      'Understand asset creation, document checks and publication blockers.':'Comprenez la création d\'actifs, les vérifications documentaires et les blocages de publication.',
+      'Check Admin + Reports':'Vérifier Administration + Rapports',
+      'Inspect governance, permissions, dashboards, reports and audit visibility.':'Inspectez la gouvernance, les autorisations, les tableaux de bord, les rapports et la visibilité d\'audit.',
+      'Full Platform':'Plateforme Complète',
+      'Start':'Démarrer',
+      'Open the prototype on the investor marketplace, the first public screen of the platform.':'Ouvrez le prototype sur le marketplace de l\'investisseur, le premier écran public de la plateforme.',
+      'Investor Flow':'Parcours Investisseur',
+      'Wallet + KYC':'Wallet + KYC',
+      'Browse, connect wallet, register, complete KYC, define investor profile and access eligible offerings.':'Parcourez, connectez le wallet, inscrivez-vous, complétez le KYC, définissez le profil investisseur et accédez aux offres éligibles.',
+      'Originator Asset Factory':'Fabrique d\'Actifs de l\'Originateur',
+      'New rule':'Nouvelle règle',
+      'Create either a pool of contracts or a standalone tokenized asset with predefined quantity and unit value.':'Créez soit un pool de contrats, soit un actif tokenisé autonome avec quantité et valeur unitaire prédéfinies.',
+      'Validator Desk':'Desk du Validateur',
+      'Audit':'Audit',
+      'Review originator, asset, contract, liquidity, redemption and publication requirements before launch.':'Examinez les exigences relatives à l\'originateur, l\'actif, le contrat, la liquidité, le rachat et la publication avant le lancement.',
+      'Open Validator':'Ouvrir le Validateur',
+      'Admin Executive':'Administration Exécutive',
+      'Dashboard':'Tableau de bord',
+      'Track platform performance, originator ranking, blocked offerings, validator exceptions and reporting.':'Suivez la performance de la plateforme, le classement des originateurs, les offres bloquées, les exceptions du validateur et les rapports.',
+      'Open Admin':'Ouvrir l\'Administration',
+      'Reports':'Rapports',
+      'Search':'Recherche',
+      'Filter by actor, operation type, date, contract, standalone asset and open text search.':'Filtrez par acteur, type d\'opération, date, contrat, actif autonome et recherche en texte libre.',
+      'Open Reports':'Ouvrir les Rapports',
+      'Documentation':'Documentation',
+      'Open current V4.7 DFD, requirements and flowcharts aligned to the platform prototype.':'Ouvrez la documentation DFD V4.7 actuelle et les diagrammes alignés sur le prototype de plateforme.',
+      'Open Downloads':'Ouvrir les Téléchargements',
+      'Full Package':'Package Complet',
+      'ZIP':'ZIP',
+      'Download documentation, Markdown/HTML versions and all flowcharts in PNG and SVG.':'Téléchargez la documentation, les versions Markdown/HTML et tous les diagrammes en PNG et SVG.',
+      'Download ZIP':'Télécharger ZIP',
+      'Disclaimer: illustrative beta wireframe for architecture, product and partnership discussion only.':'Avertissement : wireframe bêta illustratif destiné uniquement aux discussions d\'architecture, de produit et de partenariat.',
+      'Open locally by double-clicking this root index.html file.':'Ouvrez-le localement en double-cliquant sur ce fichier index.html racine.'
+    };
+    const translationsAR = {
+      'Launch Platform':'تشغيل المنصة',
+      'Open Asset Factory':'افتح مصنع الأصول',
+      'Prototype Briefing':'إحاطة النموذج الأولي',
+      'Product Readiness V4.7 · Beta Wireframe':'دقة عالية V4.7 · إطار سلكي تجريبي',
+      'Under construction':'قيد الإنشاء',
+      'Illustrative platform wireframe and beta test environment':'إطار سلكي توضيحي للمنصة وبيئة اختبار تجريبية',
+      'Before entering the platform':'قبل الدخول إلى المنصة',
+      'This prototype illustrates the expected platform experience and usability.':'يوضّح هذا النموذج الأولي التجربة المتوقعة للمنصة وسهولة استخدامها.',
+      'Use this entry page to understand what the RWA platform is expected to deliver before navigating the product screens. The prototype demonstrates how investors, approved originators such as banks, validators and central administrators may interact with tokenized offerings, but it is not production software, an investment offer or a final regulatory implementation.':'استخدم صفحة الدخول هذه لفهم ما يُتوقَّع أن تقدّمه منصة الأصول الواقعية قبل تصفّح شاشات المنتج. يوضّح النموذج الأولي كيف يمكن للمستثمرين والجهات المُصدِرة المعتمدة كالبنوك والمُدقِّقين والمديرين المركزيين التفاعل مع العروض المُرمَّزة، لكنه ليس برنامجاً إنتاجياً ولا عرض استثمار ولا تطبيقاً تنظيمياً نهائياً.',
+      'Enter Platform Wireframe':'الدخول إلى إطار المنصة',
+      'View Investor Journey':'عرض رحلة المستثمر',
+      'Downloads':'التنزيلات',
+      'Read README':'قراءة ملف README',
+      'What this prototype shows':'ما يعرضه هذا النموذج الأولي',
+      'Purpose':'الغرض',
+      'Architecture, product and usability validation':'التحقق من البنية والمنتج وسهولة الاستخدام',
+      'Default entry':'نقطة الدخول الافتراضية',
+      'Multi-asset investor marketplace':'سوق متعدد الأصول للمستثمرين',
+      'Product model':'نموذج المنتج',
+      'Offering = Pool or Standalone Asset':'العرض = مجمّع أو أصل مستقل',
+      'Access logic':'منطق الوصول',
+      'Wallet + KYC + investor profile':'المحفظة + اعرف عميلك + ملف المستثمر',
+      'Safety layer':'طبقة الأمان',
+      'Validator triage before publication':'فرز المُدقِّق قبل النشر',
+      'Expected Delivery':'النتيجة المتوقعة',
+      'The platform is expected to organize tokenized real-world asset offerings in a clear marketplace, supporting both pools and standalone assets with predefined quantity, unit value, eligibility, risk and liquidity rules.':'يُتوقَّع أن تنظّم المنصة عروض أصول العالم الحقيقي المُرمَّزة في سوق واضح، بما يدعم المجمّعات والأصول المستقلة معاً بكمية وقيمة وحدة وأهلية ومخاطر وقواعد سيولة محدَّدة مسبقاً.',
+      'Usability Intent':'الهدف من سهولة الاستخدام',
+      'The experience is designed to let users browse first, understand each asset, compare risk and then enter the controlled investment gate through wallet connection, registration, KYC and investor profile.':'صُمّمت التجربة لتتيح للمستخدمين التصفّح أولاً وفهم كل أصل ومقارنة المخاطر ثم الدخول إلى بوابة الاستثمار الخاضعة للرقابة عبر ربط المحفظة والتسجيل وإجراءات اعرف عميلك وملف المستثمر.',
+      'Beta Scope':'نطاق النسخة التجريبية',
+      'This wireframe is a discussion artifact. Values, assets, yields, originators, validators and flows are illustrative placeholders used to validate product behavior with stakeholders.':'هذا الإطار السلكي أداة للنقاش. القيم والأصول والعوائد والجهات المُصدِرة والمُدقِّقون والمسارات كلها عناصر توضيحية تُستخدم للتحقق من سلوك المنتج مع أصحاب المصلحة.',
+      'How to read the wireframe':'كيف تقرأ الإطار السلكي',
+      'Start at Marketplace':'ابدأ من السوق',
+      'See the public investor-facing experience and diversified asset cards.':'اطّلع على التجربة العامة الموجّهة للمستثمر وبطاقات الأصول المتنوعة.',
+      'Open Investor Gate':'افتح بوابة المستثمر',
+      'Review wallet, registration, KYC and investor profile controls.':'راجع ضوابط المحفظة والتسجيل واعرف عميلك وملف المستثمر.',
+      'Review Originator + Validator':'راجع الجهة المُصدِرة والمُدقِّق',
+      'Understand asset creation, document checks and publication blockers.':'افهم إنشاء الأصول وفحص المستندات وعوائق النشر.',
+      'Check Admin + Reports':'تحقّق من الإدارة والتقارير',
+      'Inspect governance, permissions, dashboards, reports and audit visibility.':'افحص الحوكمة والصلاحيات ولوحات المتابعة والتقارير ووضوح التدقيق.',
+      'Full Platform':'المنصة الكاملة',
+      'Start':'ابدأ',
+      'Open the prototype on the investor marketplace, the first public screen of the platform.':'افتح النموذج الأولي على سوق المستثمر، وهو أول شاشة عامة في المنصة.',
+      'Investor Flow':'مسار المستثمر',
+      'Wallet + KYC':'المحفظة + اعرف عميلك',
+      'Browse, connect wallet, register, complete KYC, define investor profile and access eligible offerings.':'تصفّح واربط المحفظة وسجّل وأكمل إجراءات اعرف عميلك وحدّد ملف المستثمر ثم ادخل إلى العروض المؤهَّلة.',
+      'Originator Asset Factory':'مصنع أصول الجهة المُصدِرة',
+      'New rule':'قاعدة جديدة',
+      'Create either a pool of contracts or a standalone tokenized asset with predefined quantity and unit value.':'أنشئ إما مجمّع عقود أو أصلاً مُرمَّزاً مستقلاً بكمية وقيمة وحدة محدَّدتين مسبقاً.',
+      'Validator Desk':'مكتب المُدقِّق',
+      'Audit':'التدقيق',
+      'Review originator, asset, contract, liquidity, redemption and publication requirements before launch.':'راجع متطلبات الجهة المُصدِرة والأصل والعقد والسيولة والاسترداد والنشر قبل الإطلاق.',
+      'Open Validator':'افتح المُدقِّق',
+      'Admin Executive':'الإدارة التنفيذية',
+      'Dashboard':'لوحة المتابعة',
+      'Track platform performance, originator ranking, blocked offerings, validator exceptions and reporting.':'تابع أداء المنصة وترتيب الجهات المُصدِرة والعروض المحظورة واستثناءات المُدقِّق والتقارير.',
+      'Open Admin':'افتح الإدارة',
+      'Reports':'التقارير',
+      'Search':'البحث',
+      'Filter by actor, operation type, date, contract, standalone asset and open text search.':'صفِّ حسب الطرف الفاعل ونوع العملية والتاريخ والعقد والأصل المستقل والبحث النصي الحر.',
+      'Open Reports':'فتح التقارير',
+      'Documentation':'الوثائق',
+      'Open current V4.7 DFD, requirements and flowcharts aligned to the platform prototype.':'افتح وثائق DFD V4.7 الحالية والمخططات المتوافقة مع نموذج المنصة.',
+      'Open Downloads':'افتح التنزيلات',
+      'Full Package':'الحزمة الكاملة',
+      'ZIP':'ZIP',
+      'Download documentation, Markdown/HTML versions and all flowcharts in PNG and SVG.':'نزِّل الوثائق ونسخ Markdown/HTML وجميع المخططات بصيغتَي PNG وSVG.',
+      'Download ZIP':'تنزيل ZIP',
+      'Disclaimer: illustrative beta wireframe for architecture, product and partnership discussion only.':'تنويه: إطار سلكي تجريبي توضيحي مخصّص فقط لمناقشات البنية والمنتج والشراكات.',
+      'Open locally by double-clicking this root index.html file.':'افتحه محلياً بالنقر المزدوج على ملف index.html في الجذر.'
+    };
+    const translations = {
+      'Launch Platform':'Abrir Plataforma',
+      'Open Asset Factory':'Abrir Fábrica de Ativos',
+      'Prototype Briefing':'Apresentação do Protótipo',
+      'Product Readiness V4.7 · Beta Wireframe':'Alta fidelidade V4.7 · Wireframe Beta',
+      'Under construction':'Em construção',
+      'Illustrative platform wireframe and beta test environment':'Wireframe ilustrativo da plataforma e ambiente beta de testes',
+      'Before entering the platform':'Antes de entrar na plataforma',
+      'This prototype illustrates the expected platform experience and usability.':'Este protótipo ilustra a experiência esperada da plataforma e sua usabilidade.',
+      'Use this entry page to understand what the RWA platform is expected to deliver before navigating the product screens. The prototype demonstrates how investors, approved originators such as banks, validators and central administrators may interact with tokenized offerings, but it is not production software, an investment offer or a final regulatory implementation.':'Use esta página de entrada para entender o que se espera que a plataforma RWA entregue antes de navegar pelas telas do produto. O protótipo demonstra como investidores, originadores aprovados como bancos, validadores e administradores centrais podem interagir com ofertas tokenizadas, mas não é software de produção, oferta de investimento ou implementação regulatória final.',
+      'Enter Platform Wireframe':'Entrar no Wireframe da Plataforma',
+      'View Investor Journey':'Ver Jornada do Investidor',
+      'Downloads':'Downloads',
+      'Read README':'Ler README',
+      'What this prototype shows':'O que este protótipo demonstra',
+      'Purpose':'Objetivo',
+      'Architecture, product and usability validation':'Validação de arquitetura, produto e usabilidade',
+      'Default entry':'Entrada padrão',
+      'Multi-asset investor marketplace':'Marketplace multiativo para investidores',
+      'Product model':'Modelo de produto',
+      'Offering = Pool or Standalone Asset':'Oferta = Pool ou Ativo Individual',
+      'Access logic':'Lógica de acesso',
+      'Wallet + KYC + investor profile':'Wallet + KYC + perfil do investidor',
+      'Safety layer':'Camada de segurança',
+      'Validator triage before publication':'Triagem do validador antes da publicação',
+      'Expected Delivery':'Entrega Esperada',
+      'The platform is expected to organize tokenized real-world asset offerings in a clear marketplace, supporting both pools and standalone assets with predefined quantity, unit value, eligibility, risk and liquidity rules.':'Espera-se que a plataforma organize ofertas tokenizadas de ativos reais em um marketplace claro, suportando pools e ativos individuais com quantidade predefinida, valor unitário, elegibilidade, risco e regras de liquidez.',
+      'Usability Intent':'Intenção de Usabilidade',
+      'The experience is designed to let users browse first, understand each asset, compare risk and then enter the controlled investment gate through wallet connection, registration, KYC and investor profile.':'A experiência foi desenhada para permitir que usuários naveguem primeiro, entendam cada ativo, comparem risco e depois entrem no gate controlado de investimento por meio de conexão de wallet, cadastro, KYC e perfil do investidor.',
+      'Beta Scope':'Escopo Beta',
+      'This wireframe is a discussion artifact. Values, assets, yields, originators, validators and flows are illustrative placeholders used to validate product behavior with stakeholders.':'Este wireframe é um artefato de discussão. Valores, ativos, rendimentos, originadores, validadores e fluxos são placeholders ilustrativos usados para validar o comportamento do produto com stakeholders.',
+      'How to read the wireframe':'Como ler o wireframe',
+      'Start at Marketplace':'Comece pelo Marketplace',
+      'See the public investor-facing experience and diversified asset cards.':'Veja a experiência pública do investidor e os cards de ativos diversificados.',
+      'Open Investor Gate':'Abrir Habilitação do Investidor',
+      'Review wallet, registration, KYC and investor profile controls.':'Revise os controles de wallet, cadastro, KYC e perfil do investidor.',
+      'Review Originator + Validator':'Revisar Originador + Validador',
+      'Understand asset creation, document checks and publication blockers.':'Entenda criação de ativos, checagens documentais e bloqueios de publicação.',
+      'Check Admin + Reports':'Checar Admin + Relatórios',
+      'Inspect governance, permissions, dashboards, reports and audit visibility.':'Inspecione governança, permissões, dashboards, relatórios e visibilidade de auditoria.',
+      'Full Platform':'Plataforma Completa',
+      'Start':'Início',
+      'Open the prototype on the investor marketplace, the first public screen of the platform.':'Abra o protótipo no marketplace do investidor, a primeira tela pública da plataforma.',
+      'Investor Flow':'Fluxo do Investidor',
+      'Wallet + KYC':'Wallet + KYC',
+      'Browse, connect wallet, register, complete KYC, define investor profile and access eligible offerings.':'Navegue, conecte a wallet, faça cadastro, conclua KYC, defina o perfil de investidor e acesse ofertas elegíveis.',
+      'Open Investor Gate':'Abrir Habilitação do Investidor',
+      'Originator Asset Factory':'Fábrica de Ativos do Originador',
+      'New rule':'Nova regra',
+      'Create either a pool of contracts or a standalone tokenized asset with predefined quantity and unit value.':'Crie uma pool de contratos ou um ativo tokenizado individual com quantidade e valor unitário predefinidos.',
+      'Validator Desk':'Mesa do Validador',
+      'Audit':'Auditoria',
+      'Review originator, asset, contract, liquidity, redemption and publication requirements before launch.':'Revise originador, ativo, contrato, liquidez, resgate e requisitos de publicação antes do lançamento.',
+      'Open Validator':'Abrir Validador',
+      'Admin Executive':'Admin Executivo',
+      'Dashboard':'Dashboard',
+      'Track platform performance, originator ranking, blocked offerings, validator exceptions and reporting.':'Acompanhe performance da plataforma, ranking dos originadores, ofertas bloqueadas, ressalvas do validador e relatórios.',
+      'Open Admin':'Abrir Admin',
+      'Reports':'Relatórios',
+      'Search':'Busca',
+      'Filter by actor, operation type, date, contract, standalone asset and open text search.':'Filtre por ator, tipo de operação, data, contrato, ativo individual e busca aberta.',
+      'Open Reports':'Abrir Relatórios',
+      'Documentation':'Documentação',
+      'Open current V4.7 DFD, requirements and flowcharts aligned to the platform prototype.':'Abra a documentação DFD V4.7 atual e os fluxogramas alinhados ao protótipo da plataforma.',
+      'Open Downloads':'Abrir Downloads',
+      'Full Package':'Pacote Completo',
+      'ZIP':'ZIP',
+      'Download documentation, Markdown/HTML versions and all flowcharts in PNG and SVG.':'Baixe a documentação, versões Markdown/HTML e todos os fluxogramas em PNG e SVG.',
+      'Download ZIP':'Baixar ZIP',
+      'Disclaimer: illustrative beta wireframe for architecture, product and partnership discussion only.':'Disclaimer: wireframe beta ilustrativo apenas para discussão de arquitetura, produto e parceria.',
+      'Open locally by double-clicking this root index.html file.':'Abra localmente com duplo clique neste arquivo index.html raiz.'
+    };
+    Object.assign(translations, {
+      'Product Readiness Platform V4.7 · Readiness Review':'Plataforma Operacional V4.7 · Revisão de Prontidão',
+      'This prototype now separates the complete platform vision from a feasible MVP1 build.':'Este protótipo agora separa a visão completa da plataforma de uma construção MVP1 viável.',
+      'Use this entry page to navigate the RWA platform as a product: public marketplace, complete sitemap, MVP1 scope, retail client portal, institutional buyer portal, seller organization admin, distribution partner portal, Enterprise AI checkout, billing and revenue operations, concierge desk, AI operations, compliance case management, rail partner portal, tokenized-asset technical sheet and transaction declaration layer. It is a beta discussion artifact, not production software, an investment offer or a final regulatory implementation.':'Use esta página de entrada para navegar pela plataforma RWA como produto: marketplace público, sitemap completo, escopo MVP1, portal do cliente varejo, portal do comprador institucional, admin da organização vendedora, portal do parceiro de distribuição, checkout Enterprise AI, operações de cobrança e receita, mesa de concierge, operações de IA, gestão de casos de compliance, portal de parceiros de rails, ficha técnica do ativo tokenizado e camada de declaração de transações. É um artefato beta de discussão, não software de produção, oferta de investimento ou implementação regulatória final.',
+      'Use this entry page to navigate the RWA platform as a product: public marketplace, complete sitemap, MVP1 scope, retail client portal, institutional buyer portal, seller organization admin, distribution partner portal, Enterprise AI checkout, billing and revenue operations, transaction clearance, concierge desk, AI operations, compliance case management, rail partner portal, tokenized-asset technical sheet and transaction declaration layer. It is a beta discussion artifact, not production software, an investment offer or a final regulatory implementation.':'Use esta página de entrada para navegar pela plataforma RWA como produto: marketplace público, sitemap completo, escopo MVP1, portal do cliente varejo, portal do comprador institucional, admin da organização vendedora, portal do parceiro de distribuição, checkout Enterprise AI, operações de cobrança e receita, clearance de transações, mesa de concierge, operações de IA, gestão de casos de compliance, portal de parceiros de rails, ficha técnica do ativo tokenizado e camada de declaração de transações. É um artefato beta de discussão, não software de produção, oferta de investimento ou implementação regulatória final.',
+      'Use this entry page to navigate the RWA platform as a product: public marketplace, complete sitemap, MVP1 scope, operating readiness register, retail client portal, institutional buyer portal, seller organization admin, distribution partner portal, Enterprise AI checkout, billing and revenue operations, transaction clearance, concierge desk, AI operations, compliance case management, rail partner portal, tokenized-asset technical sheet and transaction declaration layer. It is a beta discussion artifact, not production software, an investment offer or a final regulatory implementation.':'Use esta página de entrada para navegar pela plataforma RWA como produto: marketplace público, sitemap completo, escopo MVP1, registro de prontidão operacional, portal do cliente varejo, portal do comprador institucional, admin da organização vendedora, portal do parceiro de distribuição, checkout Enterprise AI, operações de cobrança e receita, clearance de transações, mesa de concierge, operações de IA, gestão de casos de compliance, portal de parceiros de rails, ficha técnica do ativo tokenizado e camada de declaração de transações. É um artefato beta de discussão, não software de produção, oferta de investimento ou implementação regulatória final.',
+      'Journey Map':'Sitemap da Plataforma',
+      'MVP1 Scope':'Escopo MVP1',
+      'Readiness Register':'Registro de Prontidão',
+      'Retail Client Portal':'Portal do Cliente Varejo',
+      'Institutional Portal':'Portal Institucional',
+      'Seller Admin':'Admin do Vendedor',
+      'Billing & Revenue':'Cobrança e Receita',
+      'AI Ops':'Operações de IA',
+      'Compliance Cases':'Casos de Compliance',
+      'Seller Plans':'Planos do Vendedor',
+      'Distribution SaaS':'SaaS de Distribuição',
+      'Asset Fact Sheet':'Ficha Técnica do Ativo',
+      'Transaction Layer':'Camada de Transações',
+      'Sitemap':'Sitemap',
+      'All platform environments, actors and routes':'Todos os ambientes, atores e rotas da plataforma',
+      'MVP1':'MVP1',
+      'Core now, lite modules, phase 2 later':'Core agora, módulos leves, fase 2 depois',
+      'Retail portal':'Portal varejo',
+      'Login, profile, wallets and transactions':'Login, perfil, carteiras e transações',
+      'Institutional portal':'Portal institucional',
+      'Mandates, diligence, allocation and committee workflow':'Mandatos, diligência, alocação e fluxo de comitê',
+      'Seller admin':'Admin do vendedor',
+      'Users, signers, plan, billing and internal approvals':'Usuários, signatários, plano, cobrança e aprovações internas',
+      'Ops layer':'Camada operacional',
+      'Billing, AI, concierge, compliance and rails':'Cobrança, IA, concierge, compliance e rails',
+      'Each actor dashboard puts the most important numbers first, then charts, risk signals and action queues. V4.7 keeps the complete operating vision visible, while adding a readiness register for artifacts, controls and owner responsibilities across the feasible MVP1 scope.':'Cada dashboard por ator coloca primeiro os números mais importantes, depois gráficos, sinais de risco e filas de ação. A V4.7 mantém a visão operacional completa visível, adicionando um registro de prontidão para artefatos, controles e responsabilidades dos donos em todo o escopo MVP1 viável.',
+      'Open MVP1 Scope':'Abrir Escopo MVP1',
+      'See what should be built first, simplified or staged.':'Veja o que deve ser construído primeiro, simplificado ou faseado.',
+      'Open Sitemap':'Abrir Sitemap',
+      'See all actor environments and how the platform is organized.':'Veja todos os ambientes dos atores e como a plataforma está organizada.',
+      'Check Readiness':'Checar Prontidão',
+      'See the minimum artifacts and controls required by each actor.':'Veja os artefatos e controles mínimos exigidos por cada ator.',
+      'Open Readiness':'Abrir Prontidão',
+      'Open the operating checklist for required artifacts, controls, owners and missing MVP1 platform evidence by actor.':'Abra o checklist operacional de artefatos exigidos, controles, donos e evidências faltantes do MVP1 por ator.',
+      'Check Platform Ops':'Checar Operação da Plataforma',
+      'Inspect billing, AI ops, concierge, compliance cases, rails and transaction layer.':'Inspecione cobrança, operações de IA, concierge, casos de compliance, rails e camada de transações.',
+      'MVP1 Feasible Scope':'Escopo MVP1 Viável',
+      'Open the build plan that separates core MVP1 modules, simplified first-release modules and phase-two platform expansion.':'Abra o plano de construção que separa módulos core do MVP1, módulos simplificados da primeira versão e expansão da plataforma na fase dois.',
+      'Journey Map':'Sitemap da Plataforma',
+      'Open the complete map of every platform environment, actor group, functional module and operating route.':'Abra o mapa completo de cada ambiente da plataforma, grupo de ator, módulo funcional e rota operacional.',
+      'Institutional Portal':'Portal Institucional',
+      'Open the workspace for funds, family offices and banks with mandate fit, committee workflow, diligence files and allocation requests.':'Abra o ambiente para fundos, family offices e bancos com aderência ao mandato, fluxo de comitê, arquivos de diligência e solicitações de alocação.',
+      'Open Institutional':'Abrir Institucional',
+      'Seller Organization Admin':'Admin da Organização Vendedora',
+      'Open the account owner area for seller users, signers, KYB, plan, invoices and internal approvals.':'Abra a área do dono da conta para usuários vendedores, signatários, KYB, plano, faturas e aprovações internas.',
+      'Open Seller Admin':'Abrir Admin do Vendedor',
+      'Distribution Partner Portal':'Portal do Parceiro de Distribuição',
+      'Open the channel workspace for attribution, conversion, revenue-share rules, approved assets and transaction leakage.':'Abra o ambiente do canal para atribuição, conversão, regras de participação na receita, ativos aprovados e vazamento de transações.',
+      'Open Partner Portal':'Abrir Portal do Parceiro',
+      'Billing & Revenue Ops':'Operações de Cobrança e Receita',
+      'Open SaaS billing, setup fees, servicing fees, transaction fees, invoices, crypto/card payments and revenue quality metrics.':'Abra cobrança SaaS, taxas de setup, servicing fees, taxas transacionais, faturas, pagamentos cripto/cartão e métricas de qualidade da receita.',
+      'Open Billing':'Abrir Cobrança',
+      'AI Operations':'Operações de IA',
+      'Open agent governance, market x-ray workflows, prompt chain, report delivery and quality control.':'Abra governança de agentes, fluxos de raio-x de mercado, cadeia de prompts, entrega de relatórios e controle de qualidade.',
+      'Open AI Ops':'Abrir Operações de IA',
+      'Concierge Desk':'Mesa de Concierge',
+      'Open the request-based Enterprise AI service desk for private scenarios, reports, client prompts and SLA tracking.':'Abra a mesa de serviço Enterprise AI por solicitação para cenários privados, relatórios, prompts de clientes e acompanhamento de SLA.',
+      'Open Concierge':'Abrir Concierge',
+      'Open the case queue for suitability, financial promotion, AML/KYC, disclosure blockers and evidence decisions.':'Abra a fila de casos para suitability, promoção financeira, AML/KYC, bloqueios de disclosure e decisões de evidência.',
+      'Open Cases':'Abrir Casos',
+      'Transaction Clearance':'Clearance de Transações',
+      'Open the admin queue for seller pre-check, standby transactions, evidence requests and final release decisions.':'Abra a fila do admin para pré-check do vendedor, transações em standby, solicitações de evidência e decisões finais de liberação.',
+      'Open Clearance':'Abrir Clearance',
+      'Rail Partner Portal':'Portal de Parceiros de Rails',
+      'Open the operational view for custody, card, crypto, banking rails, reconciliation, incidents and fallback routes.':'Abra a visão operacional de custódia, cartão, cripto, rails bancários, reconciliação, incidentes e rotas de fallback.',
+      'Open Rails':'Abrir Rails',
+      'Builder / dApp Portal':'Portal Builder / dApp',
+      'Open developer onboarding, API keys, sandbox, plugin review, usage analytics and revenue share.':'Abra onboarding de desenvolvedores, chaves de API, sandbox, revisão de plugins, analytics de uso e revenue share.',
+      'Open Builder Portal':'Abrir Portal Builder'
+    });
+    const originalText = new WeakMap();
+    let currentLanguage = 'en';
+    function activeDict(lang){ return lang==='pt'?translations:(lang==='es'?translationsES:(lang==='fr'?translationsFR:(lang==='ar'?translationsAR:null))); }
+    function __ci(dict, key){
+      if(!dict) return null;
+      if(dict[key]) return dict[key];
+      if(!dict.__ciCache){ Object.defineProperty(dict,'__ciCache',{value:{},enumerable:false}); for(const k in dict) dict.__ciCache[k.toLowerCase()]=dict[k]; }
+      return dict.__ciCache[String(key).toLowerCase()] || null;
+    }
+    function translateNodeText(node, toPt) {
+      if (!originalText.has(node)) originalText.set(node, node.nodeValue);
+      const original = originalText.get(node);
+      const trimmed = original.trim();
+      if (!trimmed) return;
+      if (!toPt) {
+        node.nodeValue = original;
+        return;
+      }
+      const translated = __ci(activeDict(window.__glemoLang||'en'), trimmed);
+      if (translated) node.nodeValue = original.replace(trimmed, translated);
+    }
+    function applyLanguage(lang) {
+      const dict = activeDict(lang);
+      const toPt = !!dict;
+      window.__glemoLang = lang;
+      document.documentElement.lang = lang==='pt'?'pt-BR':lang;
+      document.documentElement.dir = (lang==='ar') ? 'rtl' : 'ltr';
+      const sel = document.getElementById('languageSelect');
+      if (sel && sel.value !== lang) sel.value = lang;
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          if (node.parentElement && ['SCRIPT','STYLE'].includes(node.parentElement.tagName)) return NodeFilter.FILTER_REJECT;
+          return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(node => translateNodeText(node, toPt));
+    }
+    function toggleLanguage() { const o=['en','pt','es','fr','ar']; currentLanguage=o[(o.indexOf(currentLanguage)+1)%o.length]; applyLanguage(currentLanguage); }
+    function setLanguage(v){ currentLanguage=v; applyLanguage(v); }
+  </script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+/**
+ * GLEMO DESIGN SYSTEM v2.0 — GLOBAL DESIGN TOKENS
+ * Single Source of Truth for CSS Custom Properties
+ * Version: 2.0.0
+ * Architecture: Foundations · Primitives · Semantic · Geometry · Typography · Components
+ */
+
+:root {
+  /* ==========================================================================
+     01 — BRAND PRIMITIVES
+     ========================================================================== */
+  --color-brand-blue: #0059FF;
+  --color-brand-light-blue: #00BAFF;
+  --color-brand-green: #00FFA2;
+  --color-brand-yellow: #CCCF0A;
+  --color-brand-light-orange: #FF9A00;
+  --color-brand-orange: #F15C00;
+
+  /* ==========================================================================
+     02 — NEUTRAL SCALE (12 CONTINUOUS LEVELS)
+     ========================================================================== */
+  --color-neutral-0: #FFFFFF;
+  --color-neutral-50: #F7F8F9;
+  --color-neutral-100: #E9EDEE;
+  --color-neutral-200: #CCD1D7;
+  --color-neutral-300: #AEB6C0;
+  --color-neutral-400: #929EAC;
+  --color-neutral-500: #7A8491;
+  --color-neutral-600: #6F7685;
+  --color-neutral-700: #5F657D;
+  --color-neutral-800: #3E4654;
+  --color-neutral-900: #202634;
+  --color-neutral-950: #0D1624;
+
+  /* ==========================================================================
+     03 — SEMANTIC STATUS TOKENS
+     ========================================================================== */
+  --color-semantic-info: #0059FF;
+  --color-semantic-info-subtle: #EEF5FF;
+  --color-semantic-info-border: #BBD8FF;
+
+  --color-semantic-success: #087F62;
+  --color-semantic-success-subtle: #EAF8F1;
+  --color-semantic-success-border: #B2E7D5;
+
+  --color-semantic-warning: #B44400;
+  --color-semantic-warning-subtle: #FFF4EC;
+  --color-semantic-warning-border: #FCD5BC;
+
+  --color-semantic-danger: #B53C3C;
+  --color-semantic-danger-subtle: #FFF0EE;
+  --color-semantic-danger-border: #F9C8C4;
+
+  --color-semantic-neutral: #5F657D;
+  --color-semantic-neutral-subtle: #F1F4F6;
+  --color-semantic-neutral-border: #DCE2E4;
+
+  /* ==========================================================================
+     04 — SURFACE ARCHITECTURE (LIGHT THEME)
+     ========================================================================== */
+  --surface-canvas: var(--color-neutral-50);
+  --surface-default: var(--color-neutral-0);
+  --surface-subtle: #F1F4F6;
+  --surface-elevated: var(--color-neutral-0);
+  --surface-sunken: var(--color-neutral-100);
+  --surface-overlay: rgba(7, 18, 38, 0.45);
+
+  /* ==========================================================================
+     05 — SURFACE ARCHITECTURE (DARK INSTITUTIONAL THEME)
+     ========================================================================== */
+  --surface-dark-canvas: #071226;
+  --surface-dark-default: #0D1A31;
+  --surface-dark-subtle: #12233E;
+  --surface-dark-elevated: #182C4D;
+  --surface-dark-sunken: #050E1D;
+  --surface-dark-border: rgba(255, 255, 255, 0.10);
+
+  /* ==========================================================================
+     06 — CONTENT & TEXT HIERARCHY
+     ========================================================================== */
+  --content-primary: var(--color-neutral-900);
+  --content-secondary: var(--color-neutral-600);
+  --content-tertiary: var(--color-neutral-700);
+  --content-disabled: var(--color-neutral-400);
+  --content-inverse-primary: var(--color-neutral-0);
+  --content-inverse-secondary: var(--color-neutral-300);
+
+  /* ==========================================================================
+     07 — GEOMETRY: RADIUS SCALE
+     ========================================================================== */
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ==========================================================================
+     08 — GEOMETRY: BORDERS & DIVIDERS
+     ========================================================================== */
+  --border-subtle: 1px solid var(--color-neutral-100);
+  --border-default: 1px solid var(--color-neutral-200);
+  --border-strong: 1px solid var(--color-neutral-300);
+  --border-focus: 2px solid var(--color-brand-blue);
+  --divider-subtle: 1px solid var(--color-neutral-100);
+  --divider-default: 1px solid var(--color-neutral-200);
+
+  /* ==========================================================================
+     09 — GEOMETRY: ELEVATION & FUNCTIONAL SHADOWS
+     ========================================================================== */
+  --elevation-none: none;
+  --elevation-1: 0 2px 8px rgba(31, 41, 55, 0.04);
+  --elevation-2: 0 8px 24px rgba(31, 41, 55, 0.08);
+  --elevation-3: 0 16px 48px rgba(7, 18, 38, 0.16);
+
+  /* ==========================================================================
+     10 — GEOMETRY: FOCUS ACCESSIBILITY (A11Y)
+     ========================================================================== */
+  --focus-ring: 2px solid var(--color-brand-blue);
+  --focus-offset: 2px;
+
+  /* ==========================================================================
+     11 — CONTEXTUAL INTERACTION & ACTION TOKENS
+     ========================================================================== */
+  --color-action-business: var(--color-brand-blue);
+  --color-action-business-hover: #0A6BFF;
+  --color-action-investor: var(--color-brand-orange);
+  --color-action-investor-hover: #FA8501;
+  --color-action-destructive: var(--color-semantic-danger);
+  --color-action-destructive-hover: #9F2F2F;
+
+  /* ==========================================================================
+     12 — TYPOGRAPHY: FAMILY & WEIGHTS
+     ========================================================================== */
+  --font-family-sans: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-family-sans);
+  --font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: var(--font-family-mono);
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ==========================================================================
+     13 — TYPOGRAPHY SCALE: DISPLAY
+     ========================================================================== */
+  --font-size-display-xl: 48px;
+  --line-height-display-xl: 56px;
+  --font-size-display-lg: 40px;
+  --line-height-display-lg: 48px;
+  --font-size-display-md: 36px;
+  --line-height-display-md: 44px;
+
+  /* ==========================================================================
+     14 — TYPOGRAPHY SCALE: HEADINGS
+     ========================================================================== */
+  --font-size-heading-xl: 32px;
+  --line-height-heading-xl: 40px;
+  --font-size-heading-lg: 28px;
+  --line-height-heading-lg: 36px;
+  --font-size-heading-md: 24px;
+  --line-height-heading-md: 32px;
+  --font-size-heading-sm: 20px;
+  --line-height-heading-sm: 28px;
+  --font-size-heading-xs: 18px;
+  --line-height-heading-xs: 24px;
+
+  /* ==========================================================================
+     15 — TYPOGRAPHY SCALE: BODY
+     ========================================================================== */
+  --font-size-body-lg: 16px;
+  --line-height-body-lg: 24px;
+  --font-size-body-md: 14px;
+  --line-height-body-md: 20px;
+  --font-size-body-sm: 13px;
+  --line-height-body-sm: 18px;
+
+  /* ==========================================================================
+     16 — TYPOGRAPHY SCALE: LABELS & AUXILIARY
+     ========================================================================== */
+  --font-size-label-lg: 14px;
+  --line-height-label-lg: 20px;
+  --font-size-label-md: 12px;
+  --line-height-label-md: 16px;
+  --font-size-caption: 11px;
+  --line-height-caption: 16px;
+  --font-size-overline: 11px;
+  --line-height-overline: 16px;
+  --letter-spacing-overline: 0.06em;
+
+  /* ==========================================================================
+     17 — TYPOGRAPHY SCALE: NUMERIC METRICS
+     ========================================================================== */
+  --font-size-numeric-xl: 36px;
+  --line-height-numeric-xl: 44px;
+  --font-size-numeric-lg: 28px;
+  --line-height-numeric-lg: 36px;
+  --font-size-numeric-md: 20px;
+  --line-height-numeric-md: 28px;
+  --font-size-numeric-sm: 14px;
+  --line-height-numeric-sm: 20px;
+
+  /* ==========================================================================
+     18 — SPACING SCALE (4PX MODULAR GRID)
+     ========================================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ==========================================================================
+     19 — MOTION & TRANSITIONS
+     ========================================================================== */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ==========================================================================
+     20 — COMPONENT ALIASES: BUTTONS
+     ========================================================================== */
+  --component-button-radius: var(--radius-sm);
+  --component-button-height-sm: 32px;
+  --component-button-height-md: 40px;
+  --component-button-height-lg: 48px;
+
+  /* ==========================================================================
+     21 — COMPONENT ALIASES: INPUTS & SELECTS
+     ========================================================================== */
+  --component-input-radius: var(--radius-sm);
+  --component-input-height-sm: 32px;
+  --component-input-height-md: 40px;
+  --component-input-height-lg: 48px;
+  --component-input-border: var(--border-default);
+  --component-input-border-focus: var(--border-focus);
+
+  /* ==========================================================================
+     22 — COMPONENT ALIASES: MICRO-INDICATORS
+     ========================================================================== */
+  --component-badge-radius: var(--radius-full);
+  --component-status-radius: var(--radius-full);
+  --component-tag-radius: var(--radius-sm);
+
+  /* ==========================================================================
+     23 — COMPONENT ALIASES: CONTAINERS & OVERLAYS
+     ========================================================================== */
+  --component-card-radius: var(--radius-md);
+  --component-panel-radius: var(--radius-md);
+  --component-drawer-radius: var(--radius-md);
+  --component-dialog-radius: var(--radius-md);
+  --component-tooltip-radius: var(--radius-xs);
+
+  /* ==========================================================================
+     24 — COMPONENT ALIASES: ELEVATIONS
+     ========================================================================== */
+  --component-card-elevation: var(--elevation-none);
+  --component-card-hover-elevation: var(--elevation-1);
+  --component-popover-elevation: var(--elevation-2);
+  --component-drawer-elevation: var(--elevation-3);
+  --component-dialog-elevation: var(--elevation-3);
+}

@@ -1,0 +1,577 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: clip; }
+.main, .content, .screen, .screen.active { min-width: 0; max-width: 100%; }
+.table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 14px 0 18px 0;
+  border: 1px solid #1E293B;
+  border-radius: 8px;
+  background: #0B132B;
+}
+
+.table-wrap table {
+  min-width: 520px;
+  width: 100%;
+}
+
+.env-modal-trigger-btn {
+  white-space: nowrap;
+}
+
+.env-btn-label-desktop { display: inline; }
+.env-btn-label-mobile { display: none; }
+
+/* ==========================================================================
+   INTERACTIVE PERSONA & ENVIRONMENT SWITCHER CARD (DESKTOP & MOBILE)
+   ========================================================================== */
+.sidebar-env-switcher-card {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  margin: 0 0 12px 0 !important;
+  cursor: pointer !important;
+  text-align: left !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+  transition: all 0.15s ease !important;
+  font-family: inherit !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: rgba(0, 89, 255, 0.1) !important;
+}
+.sidebar-env-switcher-card:hover {
+  background: #F8FAFC !important;
+  border-color: #0059FF !important;
+  box-shadow: 0 4px 16px rgba(0, 89, 255, 0.12) !important;
+  transform: translateY(-1px) !important;
+}
+.sidebar-env-switcher-card:active {
+  background: #EFF6FF !important;
+  transform: scale(0.99) !important;
+}
+
+.env-switcher-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-bottom: 8px !important;
+}
+.env-switcher-badge {
+  font-size: 9.5px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: #0059FF !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.env-switcher-count {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  color: #0059FF !important;
+  background: #EFF6FF !important;
+  border: 1px solid #BFDBFE !important;
+  padding: 2px 7px !important;
+  border-radius: 999px !important;
+}
+
+.env-switcher-body {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin-bottom: 8px !important;
+}
+.env-switcher-icon-wrap {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  background: #EFF6FF !important;
+  border: 1px solid #BFDBFE !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  color: #0059FF !important;
+}
+.env-switcher-icon-wrap svg {
+  width: 17px !important;
+  height: 17px !important;
+  color: #0059FF !important;
+  stroke-width: 2.2px !important;
+}
+.env-switcher-text {
+  flex: 1 !important;
+  min-width: 0 !important;
+  text-align: left !important;
+}
+.env-switcher-title {
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+  line-height: 1.25 !important;
+  margin-bottom: 2px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.env-switcher-tagline {
+  font-size: 11.5px !important;
+  color: #64748B !important;
+  line-height: 1.35 !important;
+  font-weight: 500 !important;
+}
+
+.env-switcher-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding-top: 8px !important;
+  border-top: 1px solid #F1F5F9 !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  color: #0059FF !important;
+}
+.env-switcher-cta svg {
+  color: #0059FF !important;
+}
+
+/* ==========================================================================
+   TABLET & MOBILE BREAKPOINT (<= 1100px)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .app {
+    display: block !important;
+    width: 100% !important;
+    min-height: 100svh;
+  }
+
+  /* --------------------------------------------------------------------------
+     BAR 1: TOP GLOBAL PERSONA & DATA ROOM HEADER (FIXED AT TOP 0)
+     -------------------------------------------------------------------------- */
+  .glemo-persona-header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    padding: 0 10px !important;
+    background: #060D1E !important;
+    border-bottom: 1px solid #1E293B !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    z-index: 2500 !important;
+    gap: 8px !important;
+  }
+
+  .persona-header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .persona-brand-logo {
+    display: none !important;
+  }
+
+  .back-to-dataroom-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 6px 9px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    background: rgba(56, 189, 248, 0.12) !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+    color: #38BDF8 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    height: 32px !important;
+  }
+  .back-to-dataroom-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .persona-identity-badge {
+    display: none !important;
+  }
+
+  /* Top Right Actions: Language Switcher + Environment Trigger */
+  .persona-header-right {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Prominent, easily clickable Language Select */
+  .persona-header-right .glemo-lang-select {
+    display: inline-block !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 8px !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    background: #111C38 !important;
+    border: 1.5px solid #0284C7 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    outline: none !important;
+    flex-shrink: 0 !important;
+    transition: all 0.15s ease !important;
+  }
+  .persona-header-right .glemo-lang-select:focus,
+  .persona-header-right .glemo-lang-select:hover {
+    border-color: #38BDF8 !important;
+    background: #172554 !important;
+  }
+
+  /* Compact, balanced Environment Trigger Button */
+  .env-modal-trigger-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    padding: 0 9px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    border-radius: 6px !important;
+    background: #111C38 !important;
+    border: 1px solid #1E293B !important;
+    color: #E2E8F0 !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    transition: all 0.15s ease !important;
+  }
+  .env-modal-trigger-btn:hover {
+    background: #1E293B !important;
+    border-color: #38BDF8 !important;
+  }
+  .env-modal-trigger-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+    color: #38BDF8 !important;
+    flex-shrink: 0 !important;
+  }
+  .env-btn-label-desktop { display: none !important; }
+  .env-btn-label-mobile { display: inline !important; }
+  .env-modal-trigger-btn .env-count-badge {
+    display: inline-block !important;
+    background: #2563EB !important;
+    color: #FFFFFF !important;
+    font-size: 9.5px !important;
+    font-weight: 800 !important;
+    padding: 1px 5px !important;
+    border-radius: 4px !important;
+    margin-left: 2px !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     BAR 2: MARKETPLACE NAVIGATION HEADER (WHITE / LIGHT THEME)
+     -------------------------------------------------------------------------- */
+  .sidebar {
+    position: fixed !important;
+    top: 46px !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
+    padding: 0 12px !important;
+    background: #FFFFFF !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    z-index: 2400 !important;
+    overflow: visible !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .sidebar .brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+  }
+  .sidebar .brand .logo {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 14px !important;
+    border-radius: 7px !important;
+  }
+  .sidebar .brand strong {
+    font-size: 13.5px !important;
+    color: #0F172A !important;
+    font-weight: 800 !important;
+  }
+  .sidebar .brand span {
+    font-size: 10px !important;
+    color: #64748B !important;
+    display: block !important;
+  }
+
+  /* Clean Light Hamburger Toggle Button */
+  .mobile-menu-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #F8FAFC !important;
+    border: 1px solid #CBD5E1 !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    gap: 4px !important;
+    position: static !important;
+    font-size: 0 !important;
+    color: transparent !important;
+    flex-shrink: 0 !important;
+    transition: all 0.15s ease !important;
+  }
+  .mobile-menu-toggle:hover {
+    background: #EFF6FF !important;
+    border-color: #0059FF !important;
+  }
+  .mobile-menu-toggle span {
+    display: block !important;
+    width: 17px !important;
+    height: 2px !important;
+    background: #0F172A !important;
+    border-radius: 2px !important;
+    transition: all 0.2s ease !important;
+  }
+  .sidebar.menu-open .mobile-menu-toggle {
+    background: #EFF6FF !important;
+    border-color: #0059FF !important;
+  }
+  .sidebar.menu-open .mobile-menu-toggle span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+    background: #0059FF !important;
+  }
+  .sidebar.menu-open .mobile-menu-toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .sidebar.menu-open .mobile-menu-toggle span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+    background: #0059FF !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     DRAWER OVERLAY: CLEAN WHITE / LIGHT THEME MATCHING DESKTOP
+     -------------------------------------------------------------------------- */
+  .sidebar .nav {
+    display: none !important;
+    position: fixed !important;
+    top: 98px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background: #FFFFFF !important;
+    z-index: 2300 !important;
+    overflow-y: auto !important;
+    padding: 16px 14px 48px 14px !important;
+    border-top: 1px solid #E2E8F0 !important;
+    box-shadow: 0 20px 48px rgba(15, 23, 42, 0.18) !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .sidebar.menu-open .nav {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+
+  /* Section Groups */
+  .sidebar .nav .nav-group {
+    color: #64748B !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    margin: 14px 4px 6px 6px !important;
+  }
+
+  /* Nav Buttons (Clean White Cards with High Contrast) */
+  .sidebar .nav button {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-height: 44px !important;
+    padding: 11px 14px !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    color: #334155 !important;
+    border-radius: 8px !important;
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.12s ease !important;
+    margin-bottom: 3px !important;
+    -webkit-tap-highlight-color: rgba(0, 89, 255, 0.1) !important;
+  }
+  .sidebar .nav button:hover {
+    background: #F8FAFC !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+  }
+  .sidebar .nav button:active {
+    background: #EFF6FF !important;
+    transform: scale(0.99) !important;
+  }
+  .sidebar .nav button .nav-icon {
+    color: #64748B !important;
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .sidebar .nav button .nav-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .sidebar .nav button .nav-label {
+    color: #334155 !important;
+    font-weight: 600 !important;
+    flex: 1 !important;
+  }
+
+  /* Active Nav Item (Light Blue Highlight + Left Accent Bar) */
+  .sidebar .nav button.active {
+    background: #EFF6FF !important;
+    border-color: #BAE6FD !important;
+    border-left: 4px solid #0059FF !important;
+    box-shadow: 0 2px 6px rgba(0, 89, 255, 0.08) !important;
+  }
+  .sidebar .nav button.active .nav-icon,
+  .sidebar .nav button.active .nav-icon svg {
+    color: #0059FF !important;
+  }
+  .sidebar .nav button.active .nav-label {
+    color: #0059FF !important;
+    font-weight: 700 !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     MAIN CONTENT AREA OFFSET
+     -------------------------------------------------------------------------- */
+  .main {
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: 98px !important; /* 46px Bar 1 + 52px Bar 2 */
+  }
+
+  .content {
+    width: 100% !important;
+    padding: 16px 14px calc(60px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .screen.active {
+    width: 100% !important;
+  }
+
+  .prototype-warning {
+    margin: 12px 14px 0 14px !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+  }
+
+  .flow-stepper {
+    bottom: 14px !important;
+    right: 14px !important;
+  }
+}
+
+/* ==========================================================================
+   SMARTPHONE BREAKPOINT (<= 700px)
+   ========================================================================== */
+@media (max-width: 700px) {
+  .screen.active :is(h1, h2, h3, h4, p, span, small, li) {
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .market-hero {
+    padding: 16px !important;
+  }
+  .market-hero h2 {
+    font-size: 18px !important;
+  }
+  .market-hero-actions {
+    flex-direction: column !important;
+  }
+  .market-hero-actions button {
+    width: 100% !important;
+  }
+}
+
+/* ==========================================================================
+   SMALL PHONE BREAKPOINT (<= 430px)
+   ========================================================================== */
+@media (max-width: 430px) {
+  .glemo-persona-header {
+    padding: 0 8px !important;
+    gap: 4px !important;
+  }
+  .back-to-dataroom-btn {
+    padding: 5px 7px !important;
+    font-size: 10.5px !important;
+  }
+  .persona-header-right {
+    gap: 4px !important;
+  }
+  .persona-header-right .glemo-lang-select {
+    font-size: 11px !important;
+    padding: 0 5px !important;
+  }
+  .env-modal-trigger-btn {
+    padding: 0 7px !important;
+    font-size: 10.5px !important;
+  }
+  .content {
+    padding: 12px 8px calc(60px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+html[dir="rtl"] .sidebar {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+html[dir="rtl"] .persona-header-right {
+  margin-left: 0;
+  margin-right: auto;
+}
+

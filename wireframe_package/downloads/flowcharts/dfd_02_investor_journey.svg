@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<rect width="1920" height="1080" fill="#f7f4ef"/>
+<text x="60" y="96" font-family="Arial, sans-serif" font-size="46" font-weight="800" fill="#16212d">DFD 02 - Investor Journey and Eligibility Gate</text>
+<text x="60" y="146" font-family="Arial, sans-serif" font-size="27" font-weight="500" fill="#677381">Investor can browse first; investing requires wallet, registration, KYC and suitability.</text>
+<line x1="60" y1="176" x2="1860" y2="176" stroke="#e5dcd0" stroke-width="3"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#677381"/></marker></defs>
+<line x1="370" y1="535" x2="420" y2="535" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="720" y1="535" x2="770" y2="535" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1070" y1="535" x2="1120" y2="535" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="1420" y1="535" x2="1470" y2="535" stroke="#677381" stroke-width="3" marker-end="url(#arrow)"/>
+<rect x="70" y="440" width="300" height="190" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="70" y="440" width="10" height="190" rx="5" fill="#315f9e"/>
+<text x="104" y="500" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Public Marketplace</text>
+<text x="104" y="546" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Offerings appear after validation,</text>
+<text x="104" y="578" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">publication and rule checks.</text>
+<rect x="420" y="440" width="300" height="190" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="420" y="440" width="10" height="190" rx="5" fill="#17212c"/>
+<text x="454" y="500" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Wallet Connect</text>
+<text x="454" y="546" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">MetaMask, Ledger or compatible</text>
+<text x="454" y="578" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">wallet proves address control.</text>
+<rect x="770" y="440" width="300" height="190" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="770" y="440" width="10" height="190" rx="5" fill="#f28c28"/>
+<text x="804" y="500" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Registration + KYC</text>
+<text x="804" y="546" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Identity, tax ID, sanctions, PEP,</text>
+<text x="804" y="578" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">fraud checks and terms.</text>
+<rect x="1120" y="440" width="300" height="190" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="1120" y="440" width="10" height="190" rx="5" fill="#12845f"/>
+<text x="1154" y="500" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Investor Profile</text>
+<text x="1154" y="546" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Suitability, risk capacity,</text>
+<text x="1154" y="578" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">investor type and exposure limits.</text>
+<rect x="1470" y="440" width="300" height="190" rx="18" fill="#fffdfa" stroke="#e5dcd0" stroke-width="2"/>
+<rect x="1470" y="440" width="10" height="190" rx="5" fill="#b53c3c"/>
+<text x="1504" y="500" font-family="Arial, sans-serif" font-size="29" font-weight="800" fill="#16212d">Eligible Investment</text>
+<text x="1504" y="546" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">Compatible offerings receive</text>
+<text x="1504" y="578" font-family="Arial, sans-serif" font-size="22" font-weight="500" fill="#677381">signed primary purchase orders.</text>
+</svg>

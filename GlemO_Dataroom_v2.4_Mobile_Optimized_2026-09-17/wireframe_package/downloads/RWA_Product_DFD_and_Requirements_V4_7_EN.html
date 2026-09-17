@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GlemO RWA Product DFD and Requirements V4.7</title>
+  <link rel="icon" href="../assets/glemo-favicon.png?v=go-20260914">
+  <style>body{margin:0;background:#F7F8F9;color:#1f2937;font-family:Arial,system-ui,sans-serif}.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.sidebar{background:var(--color-neutral-0);border-right:1px solid #E9EDEE;padding:24px}.logo img{max-width:130px}.eyebrow,.hero-label{color:#0059FF;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}.nav{display:grid;gap:8px;margin-top:18px}.nav a{color:#5F657D;text-decoration:none;padding:10px 12px;border-radius:12px}.nav a.active,.nav a:hover{background:#EEF5FF;color:#0059FF}.content{padding:32px;max-width:1180px}.hero-logo{max-width:150px}.hero-thesis{font-size:38px;line-height:1.05;margin:16px 0}.subtitle,.hero-round,p{color:#5F657D;line-height:1.45}.diagram-grid{display:grid;gap:18px;margin-top:18px}.diagram-card{background:var(--color-neutral-0);border:1px solid #E9EDEE;border-radius:16px;padding:18px;box-shadow:0 16px 44px rgba(31,41,55,.08)}.diagram-card img{display:block;width:100%;height:auto;border:1px solid #E9EDEE;border-radius:12px;background:var(--color-neutral-0);margin-top:14px}.diagram-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}.diagram-links a,.primary-link{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border:1px solid #CCD1D7;border-radius:12px;padding:8px 12px;text-decoration:none;color:#0059FF;font-weight:700;background:var(--color-neutral-0)}.primary-link{display:grid;justify-content:start;margin-top:12px}table{width:100%;border-collapse:collapse;background:var(--color-neutral-0)}th,td{border:1px solid #E9EDEE;padding:10px;text-align:left;vertical-align:top}th{background:#EEF5FF}.table-wrap{overflow:auto;border:1px solid #E9EDEE;border-radius:12px}.footer{margin-top:24px;color:#5F657D;font-size:12px}@media(max-width:800px){.shell{display:block}.sidebar{border-right:0;border-bottom:1px solid #E9EDEE}.content{padding:18px}.hero-thesis{font-size:30px}}</style>
+  <style>
+    .diagram-grid { display:grid; grid-template-columns:1fr; gap:18px; margin-top:18px; }
+    .diagram-card { background:var(--color-neutral-0); border:1px solid #E9EDEE; border-radius:16px; padding:18px; box-shadow:0 16px 44px rgba(31,41,55,.08); }
+    .diagram-card img { display:block; width:100%; height:auto; border:1px solid #E9EDEE; border-radius:12px; background:var(--color-neutral-0); margin-top:14px; }
+    .diagram-links { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .diagram-links a { display:inline-flex; align-items:center; justify-content:center; min-height:40px; border:1px solid #CCD1D7; border-radius:12px; padding:8px 12px; text-decoration:none; color:#0059FF; font-weight:700; background:var(--color-neutral-0); }
+    .req-table td:first-child { font-weight:700; color:#0059FF; white-space:nowrap; }
+  </style>
+</head>
+<body><div class="shell">
+<aside class="sidebar">
+<div class="logo"><img src="../../html/assets/glemo-logo-wordmark.png" alt="GlemO"></div>
+<div class="eyebrow">Platform Documentation</div>
+<nav class="nav">
+<div class="nav-separator" aria-hidden="true"><span>Overview</span></div>
+<a href="../../html/00_data_room_index.html">Data Room Index</a>
+<a class="active" href="../../html/19_platform_dfd_requirements.html">DFD & Requirements</a>
+<a href="../app.html#dataFlowRequirements">Platform DFD Screen</a>
+<a href="../app.html#platformSitemap">Journey Map</a>
+<a href="../app.html#operatingReadiness">Readiness Register</a>
+</nav>
+</aside>
+<main class="content">
+<section class="hero index-hero">
+<img class="hero-logo" src="../../html/assets/glemo-logo-wordmark.png" alt="GlemO">
+<div class="hero-label">PRODUCT DOCUMENTATION</div>
+<h1 class="hero-thesis">GlemO RWA Product DFD and Requirements V4.7</h1>
+<div class="hero-divider"></div>
+<p class="hero-round">Current data flows, product requirements and implementation boundaries.</p>
+<p class="subtitle">This page declares the DFD set for the current platform status and makes the requirements traceable to the platform screens used in the investor data room.</p>
+</section>
+<h2>Product Requirements</h2>
+<div class="table-wrap"><table class="req-table"><tr><th>ID</th><th>Requirement</th><th>Scope</th><th>Platform Screens</th></tr><tr><td>R1</td><td><strong>Public asset discovery</strong><br>Marketplace, official distribution channels, asset fact sheet and clear risk labels must be visible before account creation.</td><td>MVP1 core</td><td>market, assetFactSheet, distributionSaas</td></tr>
+<tr><td>R2</td><td><strong>Buyer account and eligibility</strong><br>Retail and institutional buyers need private profile, wallets, KYC/KYB, suitability, jurisdiction and transaction history.</td><td>MVP1 core</td><td>retailPortal, investorGate, institutionalPortal</td></tr>
+<tr><td>R3</td><td><strong>Seller onboarding</strong><br>Banks, originators and approved sellers need entity profile, KYB, signers, plan, asset factory and distribution controls.</td><td>MVP1 core</td><td>sellerOrgAdmin, bankOps, assetFactory</td></tr>
+<tr><td>R4</td><td><strong>Validator gate</strong><br>Assets cannot go live without evidence review, validator status and admin publication control.</td><td>MVP1 core</td><td>validatorDesk, documentReview, complianceCases</td></tr>
+<tr><td>R5</td><td><strong>Admin transaction clearance</strong><br>Sensitive transactions can enter standby; seller pre-check helps prepare evidence, but central admin controls platform release in MVP1.</td><td>MVP1 core</td><td>transactionClearance, adminDashboard</td></tr>
+<tr><td>R6</td><td><strong>Transaction declaration layer</strong><br>The platform needs private actor ledgers and a public sanitized explorer for activity, proof hashes and chain route status.</td><td>MVP1 core</td><td>transactionLayer, ledger, reports</td></tr>
+<tr><td>R7</td><td><strong>Revenue operations</strong><br>SaaS, setup, servicing, transaction fees, invoices, card/crypto payment and collection status must be visible to prove business model.</td><td>MVP1 core</td><td>billingRevenue, sellerPlans</td></tr>
+<tr><td>R8</td><td><strong>Distribution SaaS</strong><br>Enterprise clients need channel map, conversion analytics, external transaction leakage, incentives and partner performance.</td><td>MVP1 beta</td><td>distributionSaas, distributionPartner</td></tr>
+<tr><td>R9</td><td><strong>AI concierge governance</strong><br>AI requests must capture prompt chain, allowed data scope, human QA, delivery log and customer request history.</td><td>MVP1 beta</td><td>aiOps, conciergeDesk</td></tr>
+<tr><td>R10</td><td><strong>Rails and chain architecture</strong><br>Ethereum plus Base should be documented as the initial EVM-aligned architecture, with partner rails for custody, payment and reconciliation.</td><td>MVP1 beta</td><td>railPartner, riskEngine, ledger</td></tr>
+<tr><td>R11</td><td><strong>Asset technical sheet</strong><br>Each tokenized asset needs responsible entities, tokenization history, collateral, documents, performance and liquidity behavior.</td><td>MVP1 core</td><td>assetFactSheet</td></tr>
+<tr><td>R12</td><td><strong>Builder ecosystem</strong><br>dApps, plugins and extensions should exist as a future expansion layer after marketplace and distribution rail proof.</td><td>Phase two</td><td>ecosystemBuilder</td></tr></table></div>
+<h2>Data Flow Diagrams</h2>
+<section class="diagram-grid">
+            <article class="diagram-card">
+              <h2>DFD 00 - Requirements Traceability Map</h2>
+              <p>How current product requirements connect to screens, data stores and operating controls.</p>
+              <img src="flowcharts/dfd_v47_00_requirements_traceability.svg" alt="DFD 00 - Requirements Traceability Map">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_00_requirements_traceability.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_00_requirements_traceability.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 01 - Platform Context</h2>
+              <p>GlemO as a neutral liquidity and distribution rail for tokenized real world assets.</p>
+              <img src="flowcharts/dfd_v47_01_platform_context.svg" alt="DFD 01 - Platform Context">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_01_platform_context.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_01_platform_context.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 02 - Buyer Onboarding and Eligibility</h2>
+              <p>Retail and institutional buyers move from public discovery to qualified allocation.</p>
+              <img src="flowcharts/dfd_v47_02_buyer_onboarding.svg" alt="DFD 02 - Buyer Onboarding and Eligibility">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_02_buyer_onboarding.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_02_buyer_onboarding.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 03 - Originator and Asset Factory</h2>
+              <p>Approved sellers create tokenized pools or standalone assets with evidence and rules.</p>
+              <img src="flowcharts/dfd_v47_03_originator_asset_factory.svg" alt="DFD 03 - Originator and Asset Factory">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_03_originator_asset_factory.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_03_originator_asset_factory.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 04 - Validator and Admin Control Gate</h2>
+              <p>Publication and sensitive transactions remain controlled in MVP1.</p>
+              <img src="flowcharts/dfd_v47_04_validator_admin_gate.svg" alt="DFD 04 - Validator and Admin Control Gate">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_04_validator_admin_gate.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_04_validator_admin_gate.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 05 - Transaction Layer and Public Proof</h2>
+              <p>Private ledgers hold full details while public explorer declares sanitized platform activity.</p>
+              <img src="flowcharts/dfd_v47_05_transaction_layer.svg" alt="DFD 05 - Transaction Layer and Public Proof">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_05_transaction_layer.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_05_transaction_layer.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 06 - Distribution SaaS and Revenue</h2>
+              <p>Transparency for users becomes paid intelligence for banks and asset sponsors.</p>
+              <img src="flowcharts/dfd_v47_06_distribution_saas.svg" alt="DFD 06 - Distribution SaaS and Revenue">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_06_distribution_saas.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_06_distribution_saas.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 07 - AI Agents and Concierge</h2>
+              <p>Enterprise requests become controlled prompts, reviewed reports and auditable outputs.</p>
+              <img src="flowcharts/dfd_v47_07_ai_concierge.svg" alt="DFD 07 - AI Agents and Concierge">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_07_ai_concierge.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_07_ai_concierge.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 08 - Rails Settlement and Reconciliation</h2>
+              <p>Ethereum and Base are the core EVM routes, while partner rails handle custody, payments and fallback.</p>
+              <img src="flowcharts/dfd_v47_08_rails_reconciliation.svg" alt="DFD 08 - Rails Settlement and Reconciliation">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_08_rails_reconciliation.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_08_rails_reconciliation.svg" download>Download SVG</a>
+              </div>
+            </article>
+            
+            <article class="diagram-card">
+              <h2>DFD 09 - Builder dApp and Plugin Ecosystem</h2>
+              <p>dApps and plugins expand the platform after the core liquidity loop is proven.</p>
+              <img src="flowcharts/dfd_v47_09_builder_ecosystem.svg" alt="DFD 09 - Builder dApp and Plugin Ecosystem">
+              <div class="diagram-links">
+                <a href="flowcharts/dfd_v47_09_builder_ecosystem.png" download>Download PNG</a>
+                <a href="flowcharts/dfd_v47_09_builder_ecosystem.svg" download>Download SVG</a>
+              </div>
+            </article>
+            </section>
+<h2>Download Package</h2>
+<p><a class="primary-link" href="RWA_Product_DFD_and_Requirements_V4_7_EN.zip"><strong>Download DFD and Requirements Pack</strong><span>Includes HTML, Markdown, DOCX, SVG diagrams, PNG diagrams and contact sheet.</span></a></p>
+<div class="footer">Confidential - For authorized investor and product diligence only. As of September 2026.</div>
+</main></div></body></html>
